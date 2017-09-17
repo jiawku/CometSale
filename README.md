@@ -1,0 +1,2 @@
+# CometSale
+OOAD course project
