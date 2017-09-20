@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package test;
-import com.CometSale.MongoDB.User;
-import com.CometSale.obj.userDetails;
+package com.cometsale.test;
+import com.cometsale.model.UserDetails;
+import com.cometsale.mongodb.User;
 
 
 public class test {
   
     public static void main(final String[] args) {
-      userDetails userA= new userDetails("test121241","testuser","t","est");
+      UserDetails userA= new UserDetails("test121241","testuser","t","est");
       User.push(userA);
     }
 }

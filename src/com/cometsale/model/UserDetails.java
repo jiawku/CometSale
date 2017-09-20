@@ -1,14 +1,14 @@
-package com.CometSale.obj;
+package com.cometsale.model;
 
-public class userDetails {
+public class UserDetails {
     private String netId;
     private String userName;
     private String  firstName;
     private String  lastName;
     
-    public userDetails(){}
+    public UserDetails(){}
     
-    public userDetails(String ID,String Username,String FirstName,String LastName){
+    public UserDetails(String ID,String Username,String FirstName,String LastName){
         this.netId=ID;
         this.userName=Username;
         this.firstName=FirstName;
