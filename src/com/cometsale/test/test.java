@@ -16,13 +16,23 @@
 
 package com.cometsale.test;
 import com.cometsale.model.UserDetails;
-import com.cometsale.mongodb.User;
+import com.cometsale.mongodb.UserDB;
+
 
 
 public class test {
   
     public static void main(final String[] args) {
       UserDetails userA= new UserDetails("test121241","testuser","t","est");
-      User.push(userA);
+      UserDB.push(userA);
+      
+        UserDetails findResult= UserDB.find("test121241","netID").get(0);
+        System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetID());
+        
+        UserDB.update("test121241","netID","updateFirstName", "firstName");
+      
+        findResult=(UserDetails) UserDB.find("test121241","netID").get(0);
+        System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetID());
+        
     }
 }

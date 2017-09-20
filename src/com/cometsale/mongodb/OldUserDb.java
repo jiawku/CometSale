@@ -14,7 +14,7 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 
 
-public class User {
+public class OldUserDb {
     
     public static void push(UserDetails inputUser){
         //get a client and database
@@ -23,6 +23,7 @@ public class User {
         
         //push the object
         MongoCollection<UserDetails> collection = database.getCollection("user",UserDetails.class);
+        System.out.println(""+collection);
         collection.insertOne(inputUser);
         
         //close the connection.
