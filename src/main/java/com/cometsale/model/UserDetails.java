@@ -1,5 +1,7 @@
 package com.cometsale.model;
 
+import java.util.Date;
+
 public class UserDetails {
     private String netId;
     private String userName;
@@ -44,7 +46,12 @@ public class UserDetails {
     
     public void setLastName(String LastName){
         this.lastName=LastName;
-    } 
+    }
+
+	public Date getLastLogin() {
+		// TODO Auto-generated method stub
+		return null;
+	} 
     
     
 }
