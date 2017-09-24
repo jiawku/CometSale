@@ -20,3 +20,6 @@ http://localhost:8080/CometSale/login
 
 All Working now!!!!
 - main bug was empty Resources folder needed to be added!
+
+Addition 1:
+User Details pushing to MongoDB has  which needs to be corrected.
