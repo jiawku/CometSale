@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Login Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Home Page</title>
 <link href="resources/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <style>
-#body{
+#registration{
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -25,7 +26,6 @@
     </script>
 </head>
 <body>
-<body>
 <!-- header-->
 <div class="container">
   <div class="row">
@@ -33,33 +33,19 @@
       <div class="head">
         <div class="row-fluid">
             <div class="span12">
-                <div class="span6">
-                <h3 class="muted">
-                <center>
-                   <a href="#" class="logo" title="Back to homepage"><img src="resources/images/CometSaleLogo_2.png" height="350px" width="350px" alt="logo"></a>
-                </center>
-              </h3>
-              </div>
+              <div class="span6">
+              <h3 class="muted">
+              <center>
+                   <a href="#" class="logo" title="Back to homepage"><img src="resources/images/CometSaleLogo_2.png" height="200px" width="200px" alt="logo"></a>
+              </center>
+            </h3>
           </div>
+        </div>
       </div>
     </div>
   </div>
  </div>
 </div>
-                
-<h3><center>Welcome COMETS!!</center></h3>
-<div id="body">
-<center>
-	<h2 style="color:red">${ERR_MSG}</h2>
-	<form action="login" method="post">
-		<label> Username</label> <input type="text" pattern="[a-z0-9]+" required="true" name="name"><br>
-		<label>Password</label><input type="password" required="true" name="password"><br>
-		<input type="submit" value="Login">
-		<br><br>
-		<a href="addUser" >New User? SignUp here</a>
-	</form>
-	</center>
-</div>
+
 </body>
-<%@ include file="footer.jsp" %>
 </html>

@@ -44,7 +44,7 @@ Successful Registration!!!
 </center>
 </h2>
 <center>
-<h5><a href="newuserlogin">Do you want to login ? LOGIN NOW </a></h5>
+<h5><a href="login">Do you want to login ? LOGIN NOW </a></h5>
 
 
 </center>

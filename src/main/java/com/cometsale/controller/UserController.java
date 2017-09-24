@@ -29,6 +29,17 @@ public class UserController {
 		return "registration";
 	}
 	
+	@RequestMapping(value = "/successfulLogin", method = RequestMethod.GET)
+	public String successfulLogin(HttpServletRequest request,ModelMap model) {
+		LoginBean bean = new LoginBean();
+		bean.setuserName(request.getParameter("name"));
+		bean.setPassword(request.getParameter("password"));
+		//TODO: password Authenication.
+		request.setAttribute("bean", bean);
+		SessionManagement.createSessionUser(request, bean,0);	
+		return "userdetails";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request,ModelMap model) {
 		LoginBean bean = new LoginBean();
@@ -37,7 +48,7 @@ public class UserController {
 		//TODO: password Authenication.
 		request.setAttribute("bean", bean);
 		SessionManagement.createSessionUser(request, bean,0);	
-		return "homepage";
+		return "loginpage";
 		
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
