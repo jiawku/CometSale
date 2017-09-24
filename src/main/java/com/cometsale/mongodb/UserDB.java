@@ -2,6 +2,10 @@ package com.cometsale.mongodb;
 
 import java.util.ArrayList;
 import com.cometsale.model.UserDetails;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Indexes;
 
 public class UserDB extends GenericClassDB {
 
@@ -32,4 +36,17 @@ public class UserDB extends GenericClassDB {
         
         return output;
     }*/
+    
+    public static void uniqueConstraint() {
+    	MongoClient mongoClient =initConnection();
+        MongoDatabase database = connectDatabase(mongoClient);
+        
+        //push the object
+
+        MongoCollection<UserDetails> collection = database.getCollection("UserDetails",UserDetails.class);
+    	
+    	collection.createIndex(Indexes.ascending("netId"));
+    	  //close the connection.
+        closeConnection(mongoClient);
+    }
 }

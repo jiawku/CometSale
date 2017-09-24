@@ -50,6 +50,7 @@ public class test {
 //		
 		UserDetails newUser2 = new UserDetails();
 		
+		
 		newUser2.setNetId("202378651");
 		//newUser.setUserName(request.getParameter("username"));
 		newUser2.setFirstName("Akhilesh1");
