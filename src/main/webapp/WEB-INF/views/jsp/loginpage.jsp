@@ -25,7 +25,6 @@
     </script>
 </head>
 <body>
-<body>
 <!-- header-->
 <div class="container">
   <div class="row">
@@ -51,8 +50,8 @@
 <div id="body">
 <center>
 	<h2 style="color:red">${ERR_MSG}</h2>
-	<form action="login" method="post">
-		<label> Username</label> <input type="text" pattern="[a-z0-9]+" required="true" name="name"><br>
+	<form action="successfulLogin" method="post">
+		<label>Username</label><input type="text" pattern="[a-z0-9]+" required="true" name="name"><br>
 		<label>Password</label><input type="password" required="true" name="password"><br>
 		<input type="submit" value="Login">
 		<br><br>

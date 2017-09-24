@@ -66,15 +66,85 @@
     </script>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="head">
+        <div class="row-fluid">
+            <div class="span12">
+             <div class="span6">
+              <h3 class="muted">
+                   <a href="#" class="logo" title="Back to homepage"><img src="resources/images/CometSaleLogo_2.png" height="200px" width="200px" alt="logo"></a>
+              </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+
+<div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <ul class="nav">
+                        <li>
+                            <a href="homepage">Home</a>
+                        </li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li>
+                            <a href="addProduct">Add Product</a>
+                        </li>
+						<li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li>
+                            <a href="viewProfile">View Profile</a>
+                        </li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li>
+                            <a href="#">Categories</a>
+                        </li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li>
+                            <a href="contactus">Contact Us</a>
+                        </li>
+                        
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        
+                        
+                        <li>
+                        <form id="search" style="margin:9px" action="availableauctions">
+                        <a href="#" style="color:#777777">Search</a>
+                        <input type="text">
+                        </form>
+                        </li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li>
+                            <a href="logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 	<div class="container">
       <div class="row">
-      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-
-        <a href="logout">Logout</a>
-       <br>
-<p class=" text-info"><%= new java.util.Date() %></p>
-      </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
    
    
@@ -93,6 +163,10 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
+                        <td>NetID:</td>
+                        <td>${userDetails.getNetId()}</td>
+                      </tr>
+                      <tr>
                         <td>FirstName:</td>
                         <td>${userDetails.getFirstName()}</td>
                       </tr>
@@ -101,20 +175,11 @@
                         <td>${userDetails.getLastName()}</td>
                       </tr>
                       <tr>
-                        <td>Company:</td>
-                        <td>${userDetails.getCompany()}</td>
-                      </tr>
-                      <tr>
                         <td>User Address:</td>
-                        <td>${userDetails.getUser_streetName()},&nbsp;${userDetails.getUser_houseNumber()},&nbsp;${userDetails.getUser_city()},<br>
-                        ${userDetails.getUser_state()},&nbsp;${userDetails.getUser_pinCode()}</td>
+                        <td>${userDetails.getStreetname()},&nbsp;${userDetails.getAptNo()},&nbsp;${userDetails.getCity()},<br>
+                        ${userDetails.getState()},&nbsp;${userDetails.getPinCode()}</td>
                       </tr>
-                      <tr>
-                        <td>Shipping Address:</td>
-                        <td>${userDetails.getShipping_streetName()},&nbsp;${userDetails.getShipping_houseNumber()},&nbsp;${userDetails.getShipping_city()},<br>
-                        ${userDetails.getShipping_state()},&nbsp;${userDetails.getShipping_pinCode()}</td>
-                      </tr>
-                        <tr>
+             		  <tr>
                         <td>PhoneNumber:</td>
                         <td>${userDetails.getPhoneNumber()}</td>
                       </tr>
@@ -122,11 +187,6 @@
                         <td>Email:</td>
                         <td>${userDetails.getEmail()}</td>
                       </tr>
-                      <tr>
-                        <td>Last Login Time:</td>
-                        <td>${lastLogin} </td>
-                      <tr>
-                     
                     </tbody>
                   </table>
                   <input type="submit" value="Edit Profile">
