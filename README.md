@@ -18,4 +18,5 @@ Good luck, guys.
 Use the following URL to start:
 http://localhost:8080/CometSale/login
 
-Still jsp needs to be mapped.
+All Working now!!!!
+- main bug was empty Resources folder needed to be added!
