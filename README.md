@@ -14,3 +14,8 @@ Good luck, guys.
 #### update of 09/20/2017 by Jiawei
 1. create a generic mongoDB insert, find and update methods class.
 2. use the generic methods to implement the operations on UserDetails collection.
+
+Use the following URL to start:
+http://localhost:8080/CometSale/login
+
+Still jsp needs to be mapped.
