@@ -32,19 +32,19 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 	<center>
 		<form action="register" method="post">
 		<table>
-			<tr><td><h4>NetId </h4></td><td><input type="text" name="username" placeholder="Username" size="14" required="true" autocomplete="off"></td></tr>
+			<tr><td><h4>NetId </h4></td><td><input type="text" name="netId" placeholder="Username" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>FirstName </h4></td><td><input type="text" name="firstName" placeholder="Firstname" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>LastName </h4></td><td><input type="text" name="lastName" placeholder="Lastname" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>Password </h4></td><td><input type="password" name="password" placeholder="Aa123!@#$%" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>PhoneNumber </h4></td><td><input type="text" name="phoneNumber" placeholder="PhoneNumber" size="10" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>Email </h4></td><td><input type="text" name="email" placeholder="Example@mail.com" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>user StreetName </h4></td><td><input type="text" name="user_streetName" placeholder="user's streetName" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>User HouseNumber </h4></td><td><input type="text" name="user_houseNumber" placeholder="user's HouseNumber" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>User City </h4></td><td><input type="text" name="user_city" placeholder="user's City" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>User State </h4></td><td><input type="text" name="user_state" placeholder="user's state" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>User PinCode </h4></td><td><input type="text" name="user_pinCode" placeholder="user's pincode" size="14" required="true" autocomplete="off"></td></tr>
+			<tr><td><h4>StreetName </h4></td><td><input type="text" name="streetName" placeholder="user's streetName" size="14" required="true" autocomplete="off"></td></tr>
+			<tr><td><h4>Apartment Number </h4></td><td><input type="text" name="AptNo" placeholder="user's HouseNumber" size="14" required="true" autocomplete="off"></td></tr>
+			<tr><td><h4>City </h4></td><td><input type="text" name="city" placeholder="user's City" size="14" required="true" autocomplete="off"></td></tr>
+			<tr><td><h4>State </h4></td><td><input type="text" name="state" placeholder="user's state" size="14" required="true" autocomplete="off"></td></tr>
+			<tr><td><h4>PinCode </h4></td><td><input type="text" name="pinCode" placeholder="user's pincode" size="14" required="true" autocomplete="off"></td></tr>
 		</table>
-			<input type="submit" value="Register">
+			<input type="submit" value="register">
 			<a href="newuserlogin">Already a user! Login here</a>
 		</form>
 	</center>

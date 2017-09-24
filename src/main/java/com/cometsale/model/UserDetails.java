@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class UserDetails {
     private String netId;
-    private String userName;
+   // private String userName;
     private String  firstName;
     private String  lastName;
-    private String  password;
+   // private String  password;
     private String  phoneNumber;
     private Address homeAddress;
     private String email;
@@ -17,7 +17,6 @@ public class UserDetails {
     
     public UserDetails(String ID,String Username,String FirstName,String LastName){
         this.netId=ID;
-        this.userName=Username;
         this.firstName=FirstName;
         this.lastName=LastName;
     }
@@ -29,13 +28,13 @@ public class UserDetails {
 		this.netId = netId;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+//	public String getPassword() {
+//	//	return password;
+//	}
+//
+//	public void setPassword(String password) {
+//	//	this.password = password;
+//	}
 
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -55,13 +54,13 @@ public class UserDetails {
 
 	
     
-    public String getUserName(){
-        return userName;
-    }
-    
-    public void setUserName(String UserName){
-        this.userName=UserName;
-    } 
+//    public String getUserName(){
+//        return userName;
+//    }
+//    
+//    public void setUserName(String UserName){
+//        this.userName=UserName;
+//    } 
     
     public String getFirstName(){
         return firstName;
@@ -85,6 +84,27 @@ public class UserDetails {
 
  	public void setEmail(String email) {
  		this.email = email;
+ 	}
+ 	
+ 	public String toString() {
+ 		String printString;
+ 		
+ 		printString = "netId : "+ netId +
+ 	//			" userName : "+ userName +
+ 				" firstName : " + firstName +
+ 				" lastName :" + lastName +
+ 	//			" password :"+ password +
+ 				" phoneNumber :" + phoneNumber +
+ 				" homeAddress :" + homeAddress +
+ 				 homeAddress.getAptNo() +
+ 				 homeAddress.getCity()+
+ 				 homeAddress.getPinCode()+
+ 				 homeAddress.getStreetname() +
+ 				 homeAddress.getState() +
+ 				 " email :"+ email ;
+ 		return printString;
+		
+ 		
  	}
     
 }

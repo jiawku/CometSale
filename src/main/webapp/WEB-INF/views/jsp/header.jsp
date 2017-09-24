@@ -10,7 +10,7 @@
                 <div class="span6">
                 <h3 class="muted">
                    <a href="#" class="logo" title="Back to homepage"><img src="resources/images/bid.jpg" height="50px" width="50px" alt="logo"></a>
-                   Electronic Bid
+                   CometSale
                    </h3>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="availableauctions">All Auctions</a>
+                            <a href="availableauctions">Items</a>
                         </li>
 						<li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>

@@ -6,8 +6,16 @@ public class Address {
     private String 	city;
     private String  state;
     private String  pinCode;
+    private String  AptNo;
+    
 
     
+	public String getAptNo() {
+		return AptNo;
+	}
+	public void setAptNo(String aptNo) {
+		AptNo = aptNo;
+	}
 	public String getStreetname() {
 		return streetname;
 	}

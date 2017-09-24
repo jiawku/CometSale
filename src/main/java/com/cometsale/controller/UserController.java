@@ -32,7 +32,7 @@ public class UserController {
 		System.out.println("entered normal");
 		return "contactus";
 	}
-	@RequestMapping(value = "/Register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(HttpServletRequest request,ModelMap model) {
 		
 		System.out.println("entered Register");
@@ -44,7 +44,7 @@ public class UserController {
 		userModel.setDefaultValue();
 
 		newUser.setNetId(request.getParameter("netId"));
-		newUser.setUserName(request.getParameter("username"));
+		//newUser.setUserName(request.getParameter("username"));
 		newUser.setFirstName(request.getParameter("firstName"));
 		newUser.setLastName(request.getParameter("lastName"));
 		//TODO:password.
@@ -55,15 +55,19 @@ public class UserController {
 		houseAddress.setCity(request.getParameter("city"));
 		houseAddress.setPinCode(request.getParameter("pinCode"));
 		houseAddress.setState(request.getParameter("state"));
-		houseAddress.setStreetname(request.getParameter("streetname"));
-		
+		houseAddress.setStreetname(request.getParameter("streetName"));
+		houseAddress.setAptNo(request.getParameter("AptNo"));
 		newUser.setHomeAddress(houseAddress);
-		
-		//TODO: validation method.
+
+
+
+	
+	
+
 		if(newUser.getNetId() == null || 
 		   newUser.getLastName() == null || 
-		   newUser.getUserName() == null ||
-		   newUser.getPassword() == null ||
+		//   newUser.getUserName() == null ||
+		 //  newUser.getPassword() == null ||
 		   newUser.getEmail() == null || 
 		   newUser.getPhoneNumber() == null || 
 		   newUser.getHomeAddress().getCity() == null || 
@@ -79,17 +83,23 @@ public class UserController {
 		// TODO: GenericClassDB should give proper error if there is a problem.
 		// TODO: To have specific function we need to have Db classes for each Model.
 		// TODO: All Db class send some exceptions.
+			
+		System.out.println(newUser);
 		
-		 GenericClassDB.push(newUser);
-		 
+		try {
+			GenericClassDB.push(newUser);
+		}
+		catch(Exception e) {
+			userModel.setErrorMessage(e.getMessage());
+		}
 		 
 		 return userModel.getErrorMessage();
-		 
-		 
-		 
-		 
-		 
-		
+	 
+	 
+	 
+	 
+	 
+	
 		
 		
 	}
