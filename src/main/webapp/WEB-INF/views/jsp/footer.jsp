@@ -34,13 +34,13 @@
       <div class="row" style="margin-bottom:0">
           
           <div id="footer_one">
-            <a href="#" class="logo" title="Back to homepage"><img src="resources/images/bid.jpg" height="50px" width="50px" alt="logo"></a>             
+            <a href="#" class="logo" title="Back to homepage"><img src="resources/images/CometSaleLogo_2.png" height="50px" width="50px" alt="logo"></a>             
           </div>
           
           <div id="footer_two">
-            <span class="row1"><img src="resources/images/email.jpg" height="25px" width="25px"> - hey@electronicauction.com</span>
+            <span class="row1"><img src="resources/images/email.jpg" height="25px" width="25px"> COMETSALE</span>
             <br>
-             <span class="row2"><img src="resources/images/contact.jpg" height="25px" width="25px"> - +1 (210)-712-9966</span>   
+             <span class="row2"><img src="resources/images/contact.jpg" height="25px" width="25px">http://www.cometsale.com</span>   
              
             
           </div>

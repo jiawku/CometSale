@@ -60,10 +60,6 @@ public class UserController {
 		newUser.setHomeAddress(houseAddress);
 
 
-
-	
-	
-
 		if(newUser.getNetId() == null || 
 		   newUser.getLastName() == null || 
 		//   newUser.getUserName() == null ||
@@ -91,17 +87,11 @@ public class UserController {
 		}
 		catch(Exception e) {
 			userModel.setErrorMessage(e.getMessage());
+			model.addAttribute("ERR_MSG", "Database Failed to register user");
+		return "registration_error";
 		}
 		 
-		 return userModel.getErrorMessage();
-	 
-	 
-	 
-	 
-	 
-	
-		
-		
+		return "successfulregister";
 	}
 
 }
