@@ -7,6 +7,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cometsale.authenticate.SessionManagement;
+import com.cometsale.beans.LoginBean;
 import com.cometsale.model.Address;
 import com.cometsale.model.UserDetails;
 import com.cometsale.mongodb.GenericClassDB;
@@ -28,9 +30,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String welcome2(ModelMap model) {
-		System.out.println("entered normal");
-		return "contactus";
+	public String login(HttpServletRequest request,ModelMap model) {
+		LoginBean bean = new LoginBean();
+		bean.setuserName(request.getParameter("name"));
+		bean.setPassword(request.getParameter("password"));
+		//TODO: password Authenication.
+		request.setAttribute("bean", bean);
+		SessionManagement.createSessionUser(request, bean,0);	
+		return "homepage";
+		
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(HttpServletRequest request,ModelMap model) {
