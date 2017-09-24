@@ -1,9 +1,16 @@
 package com.cometsale.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.cometsale.model.Address;
+import com.cometsale.model.UserDetails;
+import com.cometsale.mongodb.GenericClassDB;
+import com.cometsale.uimodel.UserResponseModel;
 
 @Controller
 public class UserController {
@@ -11,19 +18,80 @@ public class UserController {
 	@RequestMapping(value = "/addUser" ,method = RequestMethod.GET)
 	public String addNewUser(ModelMap model) {
 		System.out.println("entered add user page");
-		return "contactus";
+		return "registration";
 	}
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
 	public String welcome(ModelMap model) {
 		System.out.println("entered normal");
-		return "contactus";
+		return "registration";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String welcome2(ModelMap model) {
 		System.out.println("entered normal");
 		return "contactus";
+	}
+	@RequestMapping(value = "/Register", method = RequestMethod.POST)
+	public String register(HttpServletRequest request,ModelMap model) {
+		
+		System.out.println("entered Register");
+		UserDetails newUser = new UserDetails();
+		
+		//default response
+		
+		UserResponseModel userModel = new UserResponseModel();
+		userModel.setDefaultValue();
+
+		newUser.setNetId(request.getParameter("netId"));
+		newUser.setUserName(request.getParameter("username"));
+		newUser.setFirstName(request.getParameter("firstName"));
+		newUser.setLastName(request.getParameter("lastName"));
+		//TODO:password.
+		newUser.setEmail(request.getParameter("email"));
+		newUser.setPhoneNumber(request.getParameter("phoneNumber"));
+		
+		Address houseAddress = new Address();
+		houseAddress.setCity(request.getParameter("city"));
+		houseAddress.setPinCode(request.getParameter("pinCode"));
+		houseAddress.setState(request.getParameter("state"));
+		houseAddress.setStreetname(request.getParameter("streetname"));
+		
+		newUser.setHomeAddress(houseAddress);
+		
+		//TODO: validation method.
+		if(newUser.getNetId() == null || 
+		   newUser.getLastName() == null || 
+		   newUser.getUserName() == null ||
+		   newUser.getPassword() == null ||
+		   newUser.getEmail() == null || 
+		   newUser.getPhoneNumber() == null || 
+		   newUser.getHomeAddress().getCity() == null || 
+		   newUser.getHomeAddress().getPinCode() == null || 
+		   newUser.getHomeAddress().getState() == null || 
+		   newUser.getHomeAddress().getStreetname() == null){
+		   model.addAttribute("ERR_MSG", "Enter all fields correctly");
+		   return "registration_error";
+		}
+		
+		// call database if successful, then return Positive response.
+		// TODO: Rename GenericClassDB to some database Name.
+		// TODO: GenericClassDB should give proper error if there is a problem.
+		// TODO: To have specific function we need to have Db classes for each Model.
+		// TODO: All Db class send some exceptions.
+		
+		 GenericClassDB.push(newUser);
+		 
+		 
+		 return userModel.getErrorMessage();
+		 
+		 
+		 
+		 
+		 
+		
+		
+		
 	}
 
 }

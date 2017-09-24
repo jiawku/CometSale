@@ -25,8 +25,6 @@ public class SessionManagement {
 	}
 	public static void createSessionLastlogin(HttpServletRequest request, UserDetails ud) throws ParseException{
 		HttpSession session = request.getSession();
-		Date date = ud.getLastLogin();
-		session.setAttribute(Lastlogin, date);
 		
 	}
 	

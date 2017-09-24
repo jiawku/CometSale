@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+c<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -32,11 +32,10 @@
 	<center>
 		<form action="register" method="post">
 		<table>
-			<tr><td><h4>UserName </h4></td><td><input type="text" name="username" placeholder="Username" size="14" required="true" autocomplete="off"></td></tr>
+			<tr><td><h4>NetId </h4></td><td><input type="text" name="username" placeholder="Username" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>FirstName </h4></td><td><input type="text" name="firstName" placeholder="Firstname" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>LastName </h4></td><td><input type="text" name="lastName" placeholder="Lastname" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>Password </h4></td><td><input type="password" name="password" placeholder="Aa123!@#$%" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>Company </h4></td><td><input type="text" name="company" placeholder="Company(If available)" size="14" autocomplete="off"></td></tr>
 			<tr><td><h4>PhoneNumber </h4></td><td><input type="text" name="phoneNumber" placeholder="PhoneNumber" size="10" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>Email </h4></td><td><input type="text" name="email" placeholder="Example@mail.com" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>user StreetName </h4></td><td><input type="text" name="user_streetName" placeholder="user's streetName" size="14" required="true" autocomplete="off"></td></tr>
@@ -44,13 +43,8 @@
 			<tr><td><h4>User City </h4></td><td><input type="text" name="user_city" placeholder="user's City" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>User State </h4></td><td><input type="text" name="user_state" placeholder="user's state" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>User PinCode </h4></td><td><input type="text" name="user_pinCode" placeholder="user's pincode" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>Shipping StreetName </h4></td><td><input type="text" name="shipping_streetName" placeholder="Shipping streetName" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>Shipping HouseNumber </h4></td><td><input type="text" name="shipping_houseNumber" placeholder="Shipping HouseNumber" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>Shipping City </h4></td><td><input type="text" name="shipping_city" placeholder="Shipping City" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>Shipping State </h4></td><td><input type="text" name="shipping_state" placeholder="Shipping state" size="14" required="true" autocomplete="off"></td></tr>
-			<tr><td><h4>Shipping PinCode </h4></td><td><input type="text" name="shipping_pinCode" placeholder="Shipping pincode" size="14" required="true" autocomplete="off"></td></tr>
 		</table>
-			<input type="submit" value="register">
+			<input type="submit" value="Register">
 			<a href="newuserlogin">Already a user! Login here</a>
 		</form>
 	</center>

@@ -27,12 +27,12 @@ public class test {
       UserDB.push(userA);
       
         UserDetails findResult= UserDB.find("test121241","netID").get(0);
-        System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetID());
+        System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetId());
         
         UserDB.update("test121241","netID","updateFirstName", "firstName");
       
         findResult=(UserDetails) UserDB.find("test121241","netID").get(0);
-        System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetID());
+        System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetId());
         
     }
 }
