@@ -1,5 +1,7 @@
 package com.cometsale.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import com.cometsale.beans.LoginBean;
 import com.cometsale.model.Address;
 import com.cometsale.model.UserDetails;
 import com.cometsale.mongodb.GenericClassDB;
+import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
 
 @Controller
@@ -29,12 +32,7 @@ public class UserController {
 		return "registration";
 	}
 	
-	@RequestMapping(value = {"/viewProfile"}, method = RequestMethod.GET)
-	public String viewProfile(HttpServletRequest request,ModelMap model){
-		return "userinfo";
-	}
-	
-	@RequestMapping(value = "/successfulLogin", method = RequestMethod.POST)
+	@RequestMapping(value = "/successfulLogin", method = RequestMethod.GET)
 	public String successfulLogin(HttpServletRequest request,ModelMap model) {
 		LoginBean bean = new LoginBean();
 		bean.setuserName(request.getParameter("name"));
@@ -42,12 +40,7 @@ public class UserController {
 		//TODO: password Authenication.
 		request.setAttribute("bean", bean);
 		SessionManagement.createSessionUser(request, bean,0);	
-		return "homepage";
-	}
-	
-	@RequestMapping(value ="/homepage", method = RequestMethod.GET)
-	public String directToHomepage(HttpServletRequest request,ModelMap model){
-		return "homepage";
+		return "userdetails";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -108,6 +101,18 @@ public class UserController {
 		// TODO: GenericClassDB should give proper error if there is a problem.
 		// TODO: To have specific function we need to have Db classes for each Model.
 		// TODO: All Db class send some exceptions.
+		
+		//check if the resgistration number is already present.
+		ArrayList<UserDetails> resultList = UserDB.find(newUser.getNetId(),"netId");
+		UserDetails findResult;
+		
+		if(resultList!=null) {
+			 findResult= UserDB.find(newUser.getNetId(),"netId").get(0);
+			 userModel.setErrorMessage("User Already Exists");
+				model.addAttribute("ERR_MSG", "UserAlready Exists");
+			return "registration_error";
+		}
+		
 			
 		System.out.println(newUser);
 		
