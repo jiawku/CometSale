@@ -20,6 +20,11 @@ import com.cometsale.uimodel.UserResponseModel;
 @Controller
 public class UserController {
 	
+	@RequestMapping(value = {"/viewProfile"}, method = RequestMethod.GET)
+	 	public String viewProfile(HttpServletRequest request,ModelMap model){
+	 		return "userinfo";
+	 	}
+	
 	@RequestMapping(value = "/addUser" ,method = RequestMethod.GET)
 	public String addNewUser(ModelMap model) {
 		System.out.println("entered add user page");
@@ -54,6 +59,11 @@ public class UserController {
 		return "loginpage";
 		
 	}
+	
+	@RequestMapping(value ="/homepage", method = RequestMethod.GET)
+	 	public String directToHomepage(HttpServletRequest request,ModelMap model){
+	 		return "homepage";
+	  	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(HttpServletRequest request,ModelMap model) {
 		
