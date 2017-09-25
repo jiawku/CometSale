@@ -13,14 +13,14 @@ import com.cometsale.beans.LoginBean;
 import com.cometsale.model.UserDetails;
 
 public class SessionManagement {
-	public static final String SessionUSER = "USER";
-	public static final String SessionUserId = "USERID";
+	public static final String SessionNetId = "NetId";
+	public static final String SessionFirstName = "FirstName";
 	public static final String Lastlogin = "6:20PM";
 	
-	public static void createSessionUser(HttpServletRequest request, LoginBean bean,int userid){
+	public static void createSessionUser(HttpServletRequest request, LoginBean bean){
 	HttpSession session = request.getSession();
-	session.setAttribute(SessionUSER, bean.getuserName());
-	session.setAttribute(SessionUserId, userid);
+	session.setAttribute(SessionNetId, bean.getnetId());
+	session.setAttribute(SessionFirstName, 0);
 	
 	}
 	public static void createSessionLastlogin(HttpServletRequest request, UserDetails ud) throws ParseException{
@@ -29,7 +29,7 @@ public class SessionManagement {
 	}
 	
 	public static int validSessionUser(HttpSession session){
-		if(session.getAttribute(SessionUSER)!=null || session.getAttribute(SessionUSER)!=""){
+		if(session.getAttribute(SessionNetId)!=null || session.getAttribute(SessionNetId)!=""){
 			return 1;
 		}else{
 			return 0;

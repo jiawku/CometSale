@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
     <meta name="robots" content="noindex">
-    <%@ page import = "org.arrow.authenticate.SessionManagement" %>
+    <%@ page import = "com.cometsale.authenticate.SessionManagement" %>
     
 
     <title>Products Page</title>

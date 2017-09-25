@@ -37,27 +37,20 @@ public class UserController {
 		return "registration";
 	}
 	
-	@RequestMapping(value = "/successfulLogin", method = RequestMethod.GET)
+	@RequestMapping(value = "/successfulLogin", method = RequestMethod.POST)
 	public String successfulLogin(HttpServletRequest request,ModelMap model) {
 		LoginBean bean = new LoginBean();
-		bean.setuserName(request.getParameter("name"));
+		bean.setnetId(request.getParameter("name"));
 		bean.setPassword(request.getParameter("password"));
 		//TODO: password Authenication.
 		request.setAttribute("bean", bean);
-		SessionManagement.createSessionUser(request, bean,0);	
-		return "userdetails";
+		SessionManagement.createSessionUser(request, bean);	
+		return "homepage";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request,ModelMap model) {
-		LoginBean bean = new LoginBean();
-		bean.setuserName(request.getParameter("name"));
-		bean.setPassword(request.getParameter("password"));
-		//TODO: password Authenication.
-		request.setAttribute("bean", bean);
-		SessionManagement.createSessionUser(request, bean,0);	
 		return "loginpage";
-		
 	}
 	
 	@RequestMapping(value ="/homepage", method = RequestMethod.GET)
