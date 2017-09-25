@@ -19,7 +19,7 @@ public class SessionManagement {
 	
 	public static void createSessionUser(HttpServletRequest request, LoginBean bean){
 	HttpSession session = request.getSession();
-	session.setAttribute(SessionNetId, bean.getnetId());
+	session.setAttribute(SessionNetId, bean.getNetId());
 	session.setAttribute(SessionFirstName, 0);
 	
 	}

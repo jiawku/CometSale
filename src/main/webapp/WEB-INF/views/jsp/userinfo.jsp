@@ -150,7 +150,7 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">${userDetails.getUsername()} </h3>
+              <h3 class="panel-title">${userDetails.getFirstName()} </h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -176,8 +176,8 @@
                       </tr>
                       <tr>
                         <td>User Address:</td>
-                        <td>${userDetails.getStreetname()},&nbsp;${userDetails.getAptNo()},&nbsp;${userDetails.getCity()},<br>
-                        ${userDetails.getState()},&nbsp;${userDetails.getPinCode()}</td>
+                        <td>${userDetails.getHomeAddress().getStreetname()},&nbsp;${userDetails.getHomeAddress().getAptNo()},&nbsp;${userDetails.getHomeAddress().getCity()},<br>
+                        ${userDetails.getHomeAddress().getState()},&nbsp;${userDetails.getHomeAddress().getPinCode()}</td>
                       </tr>
              		  <tr>
                         <td>PhoneNumber:</td>

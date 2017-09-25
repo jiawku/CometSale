@@ -22,6 +22,19 @@ public class UserController {
 	
 	@RequestMapping(value = {"/viewProfile"}, method = RequestMethod.GET)
 	 	public String viewProfile(HttpServletRequest request,ModelMap model){
+			String netId = (String) request.getSession().getAttribute(SessionManagement.SessionNetId);
+			
+			//check if the Netid exists in database.
+			ArrayList<UserDetails> findResult= UserDB.find(netId,"netId");
+			if(findResult==null){
+				//TODO: handle user not found.
+				System.out.println("User Not found!");
+				return "userinfo";
+			}
+			UserDetails user = findResult.get(0);
+			model.addAttribute("userDetails",user);
+			System.out.println(user.getNetId());
+			
 	 		return "userinfo";
 	 	}
 	
@@ -40,10 +53,12 @@ public class UserController {
 	@RequestMapping(value = "/successfulLogin", method = RequestMethod.POST)
 	public String successfulLogin(HttpServletRequest request,ModelMap model) {
 		LoginBean bean = new LoginBean();
-		bean.setnetId(request.getParameter("name"));
+		bean.setNetId(request.getParameter("name"));
 		bean.setPassword(request.getParameter("password"));
 		//TODO: password Authenication.
 		request.setAttribute("bean", bean);
+		System.out.println(bean.getNetId());
+		System.out.println(bean.getPassword());
 		SessionManagement.createSessionUser(request, bean);	
 		return "homepage";
 	}

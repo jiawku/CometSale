@@ -13,11 +13,11 @@ public class LoginBean {
     	password = "";
     }
 	
-	public String getnetId() {
+	public String getNetId() {
 		return netId;
 	}
 	
-	public void setnetId(String netId) {
+	public void setNetId(String netId) {
 		this.netId = netId;
 	}
 	

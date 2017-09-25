@@ -24,7 +24,7 @@
     </head>
     <body>
     	<%@ include file="header.jsp" %>
-    	<% String username=(String)session.getAttribute(SessionManagement.SessionUSER); %>
+    	<% String username=(String)session.getAttribute(SessionManagement.SessionNetId); %>
     	<center>
     	<h3 style="color: green">Enter your product details</h3><br><br>
     	<form action="newauction" id="auctionform" method="POST">

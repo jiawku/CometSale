@@ -23,7 +23,7 @@
 		if(sm.validSessionUser(session)==1){
 			out.print("entered");
 			LoginBean bean=(LoginBean)request.getAttribute("bean");
-			out.print("Welcome, "+bean.getuserName());
+			out.print("Welcome, "+bean.getNetId());
 		}else{
 			String address = "/login-error.jsp";
 	    	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(address);
