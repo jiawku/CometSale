@@ -5,7 +5,8 @@ public class ProductDetails {
 	
 	String productID;
 	String productname;
-    byte[] ImageBytes;
+	String ownerID;
+    byte[] imageBytes;
 	String productDesc;
 	double offerPrice;
 	String status; //values: sold, available, locked.
@@ -17,11 +18,11 @@ public class ProductDetails {
 	
 	
 	public byte[] getImageBytes(){
-		return ImageBytes;
+		return imageBytes;
 	}
 	
 	public void setImageBytes(byte[] inputImageBytes){
-		this.ImageBytes=inputImageBytes;
+		this.imageBytes=inputImageBytes;
 	}
 	
 	public String getProductID() {
@@ -30,6 +31,14 @@ public class ProductDetails {
 	public void setProductID(String productid) {
 		this.productID = productid;
 	}
+	
+	public String getOwnerID() {
+		return productID;
+	}
+	public void setOwnerID(String ownerid) {
+		this.ownerID = ownerid;
+	}
+	
 	public String getProductname() {
 		return productname;
 	}
