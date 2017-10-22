@@ -42,7 +42,7 @@ public class ImageTestController {
 	          throws ServletException, IOException{
 
 
-		ProductDetails findResult=(ProductDetails) ProductDB.find("test","productName").get(0); 
+		ProductDetails findResult=(ProductDetails) ProductDB.find("test2","productName").get(0); 
 		byte[] imageData=findResult.getImageBytes();
 		System.out.print("imagesize:"+Integer.toString(imageData.length));
 		

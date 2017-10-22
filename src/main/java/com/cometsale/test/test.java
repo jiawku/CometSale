@@ -23,16 +23,27 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
+import org.bson.Document;
 import org.springframework.security.util.FieldUtils;
 
 import com.cometsale.model.Address;
 import com.cometsale.model.UserDetails;
 import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
-
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Indexes;
+import com.mongodb.client.model.Projections;
+import com.mongodb.client.model.Sorts;
 import com.cometsale.model.ProductDetails;
+import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.ProductDB;
+import com.cometsale.mongodb.SchemaBuilder;
 
 
 public class test {
@@ -91,28 +102,28 @@ public class test {
 	  findResult=(UserDetails) UserDB.find("202378651","netID").get(0);
 	  System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetID());*/
       
-      ProductDetails testProduct=new ProductDetails();
-      System.out.println("Product:"+testProduct.getProductID());
-      
-      File path = new File("C:\\Users\\Jiawku\\Pictures\\test.jpg");
-      testProduct.setProductName("test");
-      FileInputStream imageInFile;
-	try {
-	imageInFile = new FileInputStream(path);
-      byte[] imageData = new byte[(int) path.length()];
-		imageInFile.read(imageData);
-		imageInFile.close();
-		System.out.print(Integer.toString(imageData.length));
-      testProduct.setImageBytes(imageData);
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-    ProductDB.push(testProduct);
-      
-	ProductDetails findResult= ProductDB.find("test","productName").get(0);
-    System.out.println("Product:"+findResult.getProductID());
-    System.out.print(Integer.toString(findResult.getImageBytes().length));
+//      ProductDetails testProduct=new ProductDetails();
+//      System.out.println("Product:"+testProduct.getProductID());
+//      
+//      File path = new File("C:\\Users\\Jiawku\\Pictures\\test.jpg");
+//      testProduct.setProductName("test");
+//      FileInputStream imageInFile;
+//	try {
+//	imageInFile = new FileInputStream(path);
+//      byte[] imageData = new byte[(int) path.length()];
+//		imageInFile.read(imageData);
+//		imageInFile.close();
+//		System.out.print(Integer.toString(imageData.length));
+//      testProduct.setImageBytes(imageData);
+//	} catch (IOException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//    ProductDB.push(testProduct);
+//      
+//	ProductDetails findResult= ProductDB.find("test","productName").get(0);
+//    System.out.println("Product:"+findResult.getProductID());
+//    System.out.print(Integer.toString(findResult.getImageBytes().length));
 //    FileOutputStream fos;
 //	try {
 //		fos = new FileOutputStream("C:\\\\Users\\\\Jiawku\\\\Desktop\\\\testout.jpg");
@@ -123,6 +134,10 @@ public class test {
 //		e.printStackTrace();
 //	}
 
-      
+
+    ArrayList<ProductDetails> returnList=ProductDB.search("test");
+    for(ProductDetails i:returnList) {
+    	System.out.println(i.toString());
+    }
     }
 }

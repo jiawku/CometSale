@@ -23,6 +23,7 @@ public class ProductDetails {
 			 uuid = UUID.randomUUID().toString();
 		 } 
 		 setProductID(uuid);
+		 setStatus("available");
 	}
 	
 	
@@ -92,5 +93,16 @@ public class ProductDetails {
 		this.category = category;
 	}
 	
+	public String toString() {
+ 		String printString;
+ 		
+ 		printString = "productName : "+ getProductName() +
+ 					  "\nproductDescription : " + getProductDesc() +
+ 					  "\nownerID:"+ getOwnerID() +
+ 					  "\nstatus:"+ getStatus();
 
+ 		return printString;
+		
+ 		
+ 	}
 }
