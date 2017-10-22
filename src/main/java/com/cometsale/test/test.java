@@ -95,7 +95,7 @@ public class test {
       System.out.println("Product:"+testProduct.getProductID());
       
       File path = new File("C:\\Users\\Jiawku\\Pictures\\test.jpg");
-      testProduct.setCategory("test");
+      testProduct.setProductName("test");
       FileInputStream imageInFile;
 	try {
 	imageInFile = new FileInputStream(path);
@@ -110,7 +110,7 @@ public class test {
 	}
     ProductDB.push(testProduct);
       
-	ProductDetails findResult= ProductDB.find("test","category").get(0);
+	ProductDetails findResult= ProductDB.find("test","productName").get(0);
     System.out.println("Product:"+findResult.getProductID());
     System.out.print(Integer.toString(findResult.getImageBytes().length));
 //    FileOutputStream fos;

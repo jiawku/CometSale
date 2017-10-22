@@ -51,7 +51,7 @@
 	<h4><center>Enter the Product's Details that you want to sell</center></h4>
 	<div id="registration">
 	<center>
-		<form action="successfulAddedProduct" method="post">
+		<form action="successfulAddedProduct" method="post" enctype="multipart/form-data">
 		<br><br>
 		<table>
 			<tr><td><h4>Product Name </h4></td><td><input type="text" name="productName" placeholder="Productname" pattern="[A-Za-z0-9 ]+" size="20" required="true" autocomplete="off"></td></tr>
@@ -64,6 +64,7 @@
 			<tr><td><h4>City </h4></td><td><input type="text" name="city" placeholder="user's City" size="14" pattern="[A-Za-z]+" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>State </h4></td><td><input type="text" name="state" placeholder="user's state" size="14" pattern="[A-Za-z]+" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>PinCode </h4></td><td><input type="text" name="pinCode" placeholder="user's pincode" pattern="[0-9]+" size="14" required="true" autocomplete="off"></td></tr>
+			<tr><td><h4>Image </h4></td><td><input type="file" name="image"/></td></tr>
 		</table>
 		<br>
 			<input type="submit" value="Add Product"><br><br>

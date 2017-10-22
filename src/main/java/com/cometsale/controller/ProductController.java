@@ -1,5 +1,6 @@
 package com.cometsale.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cometsale.model.Address;
 import com.cometsale.model.ProductDetails;
@@ -27,7 +30,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/successfulAddedProduct", method = RequestMethod.POST)
-	public String register(HttpServletRequest request,ModelMap model) {
+	public String register(HttpServletRequest request,ModelMap model, @RequestParam("image") MultipartFile file)  {
 		
 		System.out.println("Added Product");
 		ProductDetails newProduct = new ProductDetails();
@@ -37,12 +40,24 @@ public class ProductController {
 		ProductResponseModel userModel = new ProductResponseModel();
 		userModel.setDefaultValue();
 
-		newProduct.setProductname(request.getParameter("productName"));
+		newProduct.setProductName(request.getParameter("productName"));
 		newProduct.setCategory(request.getParameter("category"));
 		newProduct.setOfferPrice(Double.parseDouble(request.getParameter("offerPrice")));
 		newProduct.setQuality(request.getParameter("quality"));
 		newProduct.setProductDesc(request.getParameter("productDescription"));
-		
+		if(!file.isEmpty()) {
+			
+			byte[] bytes;
+			try {
+				bytes = file.getBytes();
+				newProduct.setImageBytes(bytes);
+				System.out.println("size"+Integer.toString(bytes.length)+"uploaded size:"+Integer.toString(newProduct.getImageBytes().length));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  
+			
+		}
 		
 		Address houseAddress = new Address();
 		houseAddress.setCity(request.getParameter("city"));
@@ -58,7 +73,7 @@ public class ProductController {
 		   
 
 		if(newProduct.getProductDesc() == null || 
-				newProduct.getProductname() == null || 
+				newProduct.getProductName() == null || 
 		//   newUser.getUserName() == null ||
 		 //  newUser.getPassword() == null ||
 		   newProduct.getOfferPrice() == 0.0 || 
@@ -79,10 +94,8 @@ public class ProductController {
 		
 		//check if the resgistration number is already present.
 		ArrayList<ProductDetails> resultList = ProductDB.find(newProduct.getProductID(),"productID");
-		ProductDetails findResult;
 		
 		if(!(resultList.isEmpty())) {
-			 findResult= ProductDB.find(newProduct.getProductID(),"productId").get(0);
 			 userModel.setErrorMessage("Product Already Exists");
 				model.addAttribute("ERR_MSG", "Product Already Exists");
 			return "registration_error";

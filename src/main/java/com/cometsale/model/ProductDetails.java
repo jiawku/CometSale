@@ -7,7 +7,7 @@ import com.cometsale.mongodb.ProductDB;
 public class ProductDetails {
 	
 	String productID;
-	String productname;
+	String productName;
 	String ownerID;
     byte[] imageBytes;
 	String productDesc;
@@ -48,11 +48,11 @@ public class ProductDetails {
 		this.ownerID = ownerid;
 	}
 	
-	public String getProductname() {
-		return productname;
+	public String getProductName() {
+		return productName;
 	}
-	public void setProductname(String productname) {
-		this.productname = productname;
+	public void setProductName(String productname) {
+		this.productName = productname;
 	}
 	public String getProductDesc() {
 		return productDesc;
