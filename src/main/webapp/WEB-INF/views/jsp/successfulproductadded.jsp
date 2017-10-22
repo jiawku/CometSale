@@ -40,7 +40,7 @@
 
 <h2>
 <center>
-Product Added Successful !!!
+Product Added Successfully !!!
 </center>
 </h2>
 <center>
