@@ -1,5 +1,8 @@
 package com.cometsale.model;
 
+import java.util.UUID;
+
+import com.cometsale.mongodb.ProductDB;
 
 public class ProductDetails {
 	
@@ -14,7 +17,13 @@ public class ProductDetails {
 	Address pickupAddress;
 	String category;
 	
-	public ProductDetails(){}
+	public ProductDetails(){
+		 String uuid = UUID.randomUUID().toString();
+		 while(ProductDB.productIDinDB(uuid)) {
+			 uuid = UUID.randomUUID().toString();
+		 }
+		 setProductID(uuid);
+	}
 	
 	
 	public byte[] getImageBytes(){

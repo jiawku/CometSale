@@ -18,6 +18,12 @@ public class ProductDB extends GenericClassDB {
         return (ArrayList<ProductDetails>) GenericClassDB.find(ProductDetails.class,searchString,searchAttribute);
     }
     
+//    public static ArrayList<ProductDetails> find(String searchString, String searchAttribute) {
+//        return (ArrayList<ProductDetails>) GenericClassDB.find(ProductDetails.class,searchString,searchAttribute);
+//    }
+//    
+    
+    
     public static void update(String searchString, String searchAttribute,String updateString,String updateAttribute) {
         GenericClassDB.update(ProductDetails.class,searchString,searchAttribute,updateString,updateAttribute);
     }
@@ -34,4 +40,14 @@ public class ProductDB extends GenericClassDB {
     	  //close the connection.
         closeConnection(mongoClient);
     }
+    
+    public static boolean productIDinDB(String inputID) {
+    	ArrayList<ProductDetails> result=find(inputID, "productID");
+    	if(result.isEmpty()) {
+    		return false;
+    	} else {
+    		return true;
+    	}
+    }
+    
 }
