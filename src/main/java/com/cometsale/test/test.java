@@ -29,7 +29,7 @@ import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
 
 import com.cometsale.model.ProductDetails;
-import com.cometsale.mongodb.ProductDB;
+import com.cometsale.mongodb.OldProductDB;
 
 
 public class test {
@@ -91,7 +91,7 @@ public class test {
       ProductDetails testProduct=new ProductDetails();
       
       
-      File path = new File("C:\\Users\\Jiawku\\Pictures\\test.jpg");
+      File path = new File("C:\\Users\\Jiawku\\Desktop\\test.jpg");
       testProduct.setProductid(8888);
       
       FileInputStream imageInFile;
@@ -100,14 +100,14 @@ public class test {
       byte[] imageData = new byte[(int) path.length()];
 		imageInFile.read(imageData);
 	
-      testProduct.setImage(imageData);
+      testProduct.setImageBytes(imageData);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
       
 //      System.out.println("Product:"+testProduct.encodeImageBytes);	
-     ProductDB.push(testProduct);
+     OldProductDB.push(testProduct);
       
     }
 }
