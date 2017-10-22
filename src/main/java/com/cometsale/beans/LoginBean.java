@@ -3,22 +3,22 @@ package com.cometsale.beans;
 
 public class LoginBean {
 
-	private String netId;
+	private String netID;
 	private String password;
     /**
      * Default constructor. 
      */
     public LoginBean() {
-    	netId = "";
+    	netID = "";
     	password = "";
     }
 	
-	public String getNetId() {
-		return netId;
+	public String getNetID() {
+		return netID;
 	}
 	
-	public void setNetId(String netId) {
-		this.netId = netId;
+	public void setNetID(String netID) {
+		this.netID = netID;
 	}
 	
 	public String getPassword() {

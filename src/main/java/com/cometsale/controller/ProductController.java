@@ -73,11 +73,11 @@ public class ProductController {
 		// TODO: All Db class send some exceptions.
 		
 		//check if the resgistration number is already present.
-		ArrayList<ProductDetails> resultList = UserDB.find(newProduct.getNetId(),"netId");
+		ArrayList<UserDetails> resultList = UserDB.find(Integer.toString(newProduct.getProductid()),"netId");
 		UserDetails findResult;
 		
 		if(resultList!=null) {
-			 findResult= UserDB.find(newProduct.getNetId(),"netId").get(0);
+			 findResult= UserDB.find(Integer.toString(newProduct.getProductid()),"netId").get(0);
 			 userModel.setErrorMessage("User Already Exists");
 				model.addAttribute("ERR_MSG", "UserAlready Exists");
 			return "registration_error";

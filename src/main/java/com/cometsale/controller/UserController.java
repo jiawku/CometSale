@@ -22,10 +22,10 @@ public class UserController {
 	
 	@RequestMapping(value = {"/viewProfile"}, method = RequestMethod.GET)
 	 	public String viewProfile(HttpServletRequest request,ModelMap model){
-			String netId = (String) request.getSession().getAttribute(SessionManagement.SessionNetId);
+			String netID = (String) request.getSession().getAttribute(SessionManagement.SessionNetID);
 			
 			//check if the Netid exists in database.
-			ArrayList<UserDetails> findResult= UserDB.find(netId,"netId");
+			ArrayList<UserDetails> findResult= UserDB.find(netID,"netID");
 			if(findResult==null){
 				//TODO: handle user not found.
 				System.out.println("User Not found!");
@@ -33,7 +33,7 @@ public class UserController {
 			}
 			UserDetails user = findResult.get(0);
 			model.addAttribute("userDetails",user);
-			System.out.println(user.getNetId());
+			System.out.println(user.getNetID());
 			
 	 		return "userinfo";
 	 	}
@@ -53,11 +53,11 @@ public class UserController {
 	@RequestMapping(value = "/successfulLogin", method = RequestMethod.POST)
 	public String successfulLogin(HttpServletRequest request,ModelMap model) {
 		LoginBean bean = new LoginBean();
-		bean.setNetId(request.getParameter("name"));
+		bean.setNetID(request.getParameter("name"));
 		bean.setPassword(request.getParameter("password"));
 		//TODO: password Authenication.
 		request.setAttribute("bean", bean);
-		System.out.println(bean.getNetId());
+		System.out.println(bean.getNetID());
 		System.out.println(bean.getPassword());
 		SessionManagement.createSessionUser(request, bean);	
 		return "homepage";
@@ -83,7 +83,7 @@ public class UserController {
 		UserResponseModel userModel = new UserResponseModel();
 		userModel.setDefaultValue();
 
-		newUser.setNetId(request.getParameter("netId"));
+		newUser.setNetID(request.getParameter("netID"));
 		//newUser.setUserName(request.getParameter("username"));
 		newUser.setFirstName(request.getParameter("firstName"));
 		newUser.setLastName(request.getParameter("lastName"));
@@ -100,7 +100,7 @@ public class UserController {
 		newUser.setHomeAddress(houseAddress);
 
 
-		if(newUser.getNetId() == null || 
+		if(newUser.getNetID() == null || 
 		   newUser.getLastName() == null || 
 		//   newUser.getUserName() == null ||
 		 //  newUser.getPassword() == null ||
@@ -121,11 +121,11 @@ public class UserController {
 		// TODO: All Db class send some exceptions.
 		
 		//check if the resgistration number is already present.
-		ArrayList<UserDetails> resultList = UserDB.find(newUser.getNetId(),"netId");
+		ArrayList<UserDetails> resultList = UserDB.find(newUser.getNetID(),"netID");
 		UserDetails findResult;
 		
 		if(resultList!=null) {
-			 findResult= UserDB.find(newUser.getNetId(),"netId").get(0);
+			 findResult= UserDB.find(newUser.getNetID(),"netID").get(0);
 			 userModel.setErrorMessage("User Already Exists");
 				model.addAttribute("ERR_MSG", "UserAlready Exists");
 			return "registration_error";

@@ -28,7 +28,7 @@ public abstract class GenericClassDB {
         
     }
 
-    protected static MongoDatabase connectDatabase(MongoClient mongoClient){
+    public static MongoDatabase connectDatabase(MongoClient mongoClient){
         CodecRegistry pojoCodecRegistry = fromRegistries(MongoClient.getDefaultCodecRegistry(),
                 fromProviders(PojoCodecProvider.builder().automatic(true).build()));
         

@@ -15,43 +15,52 @@
  */
 
 package com.cometsale.test;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import com.cometsale.model.Address;
 import com.cometsale.model.UserDetails;
 import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
 
+import com.cometsale.model.ProductDetails;
+import com.cometsale.mongodb.ProductDB;
 
 
 public class test {
   
     public static void main(final String[] args) {
-  
-//      
-//		UserDetails newUser = new UserDetails();
-//		
-//		newUser.setNetId("20237865");
-//		//newUser.setUserName(request.getParameter("username"));
-//		newUser.setFirstName("Akhilesh");
-//		newUser.setLastName("Kumar");
-//		//TODO:password.
-//		newUser.setEmail("akhi.x319@gmail.com");
-//		newUser.setPhoneNumber("4696644745");
-//		
-//		Address houseAddress = new Address();
-//		houseAddress.setCity("Dallas");
-//		houseAddress.setPinCode("75252");
-//		houseAddress.setState("Richardson");
-//		houseAddress.setStreetname("7815 McCallum");
-//		houseAddress.setAptNo("16101");
-//		newUser.setHomeAddress(houseAddress);
-//		
-//		UserDB.push(newUser);
-//		
-//		
+       
+/*	UserDetails newUser = new UserDetails();
+		
+		newUser.setNetID("20237865");
+		//newUser.setUserName(request.getParameter("username"));
+		newUser.setFirstName("Akhilesh");
+		newUser.setLastName("Kumar");
+		//TODO:password.
+		newUser.setEmail("akhi.x319@gmail.com");
+		newUser.setPhoneNumber("4696644745");
+		
+		Address houseAddress = new Address();
+		houseAddress.setCity("Dallas");
+		houseAddress.setPinCode("75252");
+		houseAddress.setState("Richardson");
+		houseAddress.setStreetname("7815 McCallum");
+		houseAddress.setAptNo("16101");
+		newUser.setHomeAddress(houseAddress);
+		
+		UserDB.push(newUser);
+		
+		
 		UserDetails newUser2 = new UserDetails();
 		
 		
-		newUser2.setNetId("202378651");
+		newUser2.setNetID("202378651");
 		//newUser.setUserName(request.getParameter("username"));
 		newUser2.setFirstName("Akhilesh1");
 		newUser2.setLastName("Kumar");
@@ -71,13 +80,34 @@ public class test {
 		UserDB.push(newUser2);
 		
    
-	  UserDetails findResult= UserDB.find("test121241","netID").get(0);
-	  System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetId());
+	  UserDetails findResult= UserDB.find("Akhilesh1","firstName").get(0);
+	  System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetID());
 	    
-	  UserDB.update("test121241","netID","updateFirstName", "firstName");
+	  UserDB.update("202378651","netID","updateFirstName", "firstName");
 	  
-	  findResult=(UserDetails) UserDB.find("test121241","netID").get(0);
-	  System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetId());
-        
+	  findResult=(UserDetails) UserDB.find("202378651","netID").get(0);
+	  System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetID());*/
+      
+      ProductDetails testProduct=new ProductDetails();
+      
+      
+      File path = new File("C:\\Users\\Jiawku\\Pictures\\test.jpg");
+      testProduct.setProductid(8888);
+      
+      FileInputStream imageInFile;
+	try {
+	imageInFile = new FileInputStream(path);
+      byte[] imageData = new byte[(int) path.length()];
+		imageInFile.read(imageData);
+	
+      testProduct.setImage(imageData);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      
+//      System.out.println("Product:"+testProduct.encodeImageBytes);	
+     ProductDB.push(testProduct);
+      
     }
 }

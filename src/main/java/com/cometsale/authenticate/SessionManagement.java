@@ -13,13 +13,13 @@ import com.cometsale.beans.LoginBean;
 import com.cometsale.model.UserDetails;
 
 public class SessionManagement {
-	public static final String SessionNetId = "NetId";
+	public static final String SessionNetID = "NetID";
 	public static final String SessionFirstName = "FirstName";
 	public static final String Lastlogin = "6:20PM";
 	
 	public static void createSessionUser(HttpServletRequest request, LoginBean bean){
 	HttpSession session = request.getSession();
-	session.setAttribute(SessionNetId, bean.getNetId());
+	session.setAttribute(SessionNetID, bean.getNetID());
 	session.setAttribute(SessionFirstName, 0);
 	
 	}
@@ -29,7 +29,7 @@ public class SessionManagement {
 	}
 	
 	public static int validSessionUser(HttpSession session){
-		if(session.getAttribute(SessionNetId)!=null || session.getAttribute(SessionNetId)!=""){
+		if(session.getAttribute(SessionNetID)!=null || session.getAttribute(SessionNetID)!=""){
 			return 1;
 		}else{
 			return 0;

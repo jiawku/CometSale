@@ -1,18 +1,25 @@
 package com.cometsale.model;
 
+import org.apache.commons.codec.binary.Base64;
+
 public class ProductDetails {
 	
 	int productid;
 	String productname;
-	//TODO: add for image;
+    String encodeImageBytes;
 	String productDesc;
 	double offerPrice;
-	
-	
-	String status; //values: sold, available, pending.
+	String status; //values: sold, available, locked.
 	String quality;
-	Address pickupAddress;
+//	Address pickupAddress;
 	String category;
+	
+	public ProductDetails(){}
+	
+	public void setImage(byte[] imageBytes){
+		this.encodeImageBytes=Base64.encodeBase64URLSafeString(imageBytes);
+	}
+	
 	public int getProductid() {
 		return productid;
 	}
@@ -49,12 +56,12 @@ public class ProductDetails {
 	public void setQuality(String quality) {
 		this.quality = quality;
 	}
-	public Address getPickupAddress() {
+/*	public Address getPickupAddress() {
 		return pickupAddress;
 	}
 	public void setPickupAddress(Address pickupAddress) {
 		this.pickupAddress = pickupAddress;
-	}
+	}*/
 	public String getCategory() {
 		return category;
 	}
