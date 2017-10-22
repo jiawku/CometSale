@@ -21,7 +21,7 @@ public class ProductDetails {
 		 String uuid = UUID.randomUUID().toString();
 		 while(ProductDB.productIDinDB(uuid)) {
 			 uuid = UUID.randomUUID().toString();
-		 }
+		 } 
 		 setProductID(uuid);
 	}
 	
@@ -42,7 +42,7 @@ public class ProductDetails {
 	}
 	
 	public String getOwnerID() {
-		return productID;
+		return ownerID;
 	}
 	public void setOwnerID(String ownerid) {
 		this.ownerID = ownerid;

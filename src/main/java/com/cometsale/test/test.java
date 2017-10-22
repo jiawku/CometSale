@@ -92,10 +92,9 @@ public class test {
 	  System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetID());*/
       
       ProductDetails testProduct=new ProductDetails();
-    
+      System.out.println("Product:"+testProduct.getProductID());
       
-      File path = new File("C:\\Users\\Jiawku\\Desktop\\test.jpg");
-      testProduct.setProductID("8888");
+      File path = new File("C:\\Users\\Jiawku\\Pictures\\test.jpg");
       testProduct.setCategory("test");
       FileInputStream imageInFile;
 	try {
@@ -111,18 +110,18 @@ public class test {
 	}
     ProductDB.push(testProduct);
       
-	ProductDetails findResult= ProductDB.find("8888","productID").get(0);
+	ProductDetails findResult= ProductDB.find("test","category").get(0);
     System.out.println("Product:"+findResult.getProductID());
     System.out.print(Integer.toString(findResult.getImageBytes().length));
-    FileOutputStream fos;
-	try {
-		fos = new FileOutputStream("C:\\\\Users\\\\Jiawku\\\\Desktop\\\\testout.jpg");
-		fos.write(findResult.getImageBytes());
-		fos.close();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+//    FileOutputStream fos;
+//	try {
+//		fos = new FileOutputStream("C:\\\\Users\\\\Jiawku\\\\Desktop\\\\testout.jpg");
+//		fos.write(findResult.getImageBytes());
+//		fos.close();
+//	} catch (IOException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
 
       
     }
