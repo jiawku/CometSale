@@ -135,7 +135,7 @@ public class test {
 //	}
 
 
-    ArrayList<ProductDetails> returnList=ProductDB.search("test");
+    ArrayList<ProductDetails> returnList=ProductDB.fetchAll();
     for(ProductDetails i:returnList) {
     	System.out.println(i.toString());
     }

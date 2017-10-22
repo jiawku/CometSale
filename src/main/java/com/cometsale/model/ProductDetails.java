@@ -99,7 +99,7 @@ public class ProductDetails {
  		printString = "productName : "+ getProductName() +
  					  "\nproductDescription : " + getProductDesc() +
  					  "\nownerID:"+ getOwnerID() +
- 					  "\nstatus:"+ getStatus();
+ 					  "\nstatus:"+ getStatus()+"\n";
 
  		return printString;
 		

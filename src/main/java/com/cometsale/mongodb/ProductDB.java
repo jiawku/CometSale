@@ -45,6 +45,23 @@ public class ProductDB extends GenericClassDB {
     
     }
     
+    public static ArrayList<ProductDetails> fetchAll() {
+    	return fetchAll(25);
+    }
+    
+    public static ArrayList<ProductDetails> fetchAll(int limit) {
+    	
+   	    
+	    MongoClient mongoClient =initConnection();
+        MongoDatabase database = connectDatabase(mongoClient);
+        MongoCollection<ProductDetails> collection = database.getCollection("ProductDetails",ProductDetails.class);
+    	
+        ArrayList<ProductDetails> output =  collection.find().limit(limit).into(new ArrayList());
+        
+        closeConnection(mongoClient);
+        return output;
+    
+    }
 
     
     public static void update(String searchString, String searchAttribute,String updateString,String updateAttribute) {
