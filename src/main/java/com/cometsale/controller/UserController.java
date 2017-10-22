@@ -124,7 +124,7 @@ public class UserController {
 		ArrayList<UserDetails> resultList = UserDB.find(newUser.getNetID(),"netID");
 		UserDetails findResult;
 		
-		if(resultList!=null) {
+		if(!(resultList.isEmpty())) {
 			 findResult= UserDB.find(newUser.getNetID(),"netID").get(0);
 			 userModel.setErrorMessage("User Already Exists");
 				model.addAttribute("ERR_MSG", "UserAlready Exists");

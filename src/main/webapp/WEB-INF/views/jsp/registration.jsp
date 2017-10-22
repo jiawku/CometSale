@@ -54,7 +54,7 @@
 		<form action="register" method="post">
 		<br><br>
 		<table>
-			<tr><td><h4>NetId </h4></td><td><input type="text" name="netId" placeholder="Username" pattern="[a-z0-9]+" size="14" required="true" autocomplete="off"></td></tr>
+			<tr><td><h4>NetId </h4></td><td><input type="text" name="netID" placeholder="Username" pattern="[a-z0-9]+" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>FirstName </h4></td><td><input type="text" name="firstName" placeholder="Firstname" pattern="[A-Za-z]+" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>LastName </h4></td><td><input type="text" name="lastName" placeholder="Lastname" pattern="[A-Za-z]+" size="14" required="true" autocomplete="off"></td></tr>
 			<tr><td><h4>Password </h4></td><td><input type="password" name="password" placeholder="Aa123!@#$%" size="14" required="true" autocomplete="off"></td></tr>

@@ -45,7 +45,7 @@ public class UserDB extends GenericClassDB {
 
         MongoCollection<UserDetails> collection = database.getCollection("UserDetails",UserDetails.class);
     	
-    	collection.createIndex(Indexes.ascending("netId"));
+    	collection.createIndex(Indexes.ascending("netID"));
     	  //close the connection.
         closeConnection(mongoClient);
     }

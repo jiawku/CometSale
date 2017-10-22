@@ -22,7 +22,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/addProduct" ,method = RequestMethod.GET)
 	public String addProduct(ModelMap model) {
-		System.out.println("entered add user page");
+		System.out.println("entered add product page");
 		return "newauction";
 	}
 	
@@ -52,6 +52,10 @@ public class ProductController {
 		houseAddress.setAptNo(request.getParameter("AptNo"));
 		newProduct.setPickupAddress(houseAddress);
 
+		System.out.println(newProduct.getProductID());
+		System.out.println(newProduct.getProductDesc());
+		System.out.println(newProduct.getPickupAddress().getCity());
+		   
 
 		if(newProduct.getProductDesc() == null || 
 				newProduct.getProductname() == null || 
@@ -74,17 +78,16 @@ public class ProductController {
 		// TODO: All Db class send some exceptions.
 		
 		//check if the resgistration number is already present.
-		ArrayList<ProductDetails> resultList = ProductDB.find(newProduct.getProductID(),"netId");
+		ArrayList<ProductDetails> resultList = ProductDB.find(newProduct.getProductID(),"productID");
 		ProductDetails findResult;
 		
-		if(resultList!=null) {
-			 findResult= ProductDB.find(newProduct.getProductID(),"netId").get(0);
-			 userModel.setErrorMessage("User Already Exists");
-				model.addAttribute("ERR_MSG", "UserAlready Exists");
+		if(!(resultList.isEmpty())) {
+			 findResult= ProductDB.find(newProduct.getProductID(),"productId").get(0);
+			 userModel.setErrorMessage("Product Already Exists");
+				model.addAttribute("ERR_MSG", "Product Already Exists");
 			return "registration_error";
 		}
 		
-			
 		System.out.println(newProduct);
 		
 		try {
@@ -92,11 +95,11 @@ public class ProductController {
 		}
 		catch(Exception e) {
 			userModel.setErrorMessage(e.getMessage());
-			model.addAttribute("ERR_MSG", "Database Failed to register user");
+			model.addAttribute("ERR_MSG", "Database Failed to register product");
 		return "registration_error";
 		}
 		 
-		return "successfulregister";
+		return "successfulproductadded";
 	}
 
 }

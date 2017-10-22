@@ -51,7 +51,7 @@
 	<h4><center>Enter the Product's Details that you want to sell</center></h4>
 	<div id="registration">
 	<center>
-		<form action="register" method="post">
+		<form action="successfulAddedProduct" method="post">
 		<br><br>
 		<table>
 			<tr><td><h4>Product Name </h4></td><td><input type="text" name="productName" placeholder="Productname" pattern="[A-Za-z0-9 ]+" size="20" required="true" autocomplete="off"></td></tr>
