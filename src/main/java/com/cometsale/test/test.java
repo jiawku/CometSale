@@ -18,10 +18,13 @@ package com.cometsale.test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import org.springframework.security.util.FieldUtils;
 
 import com.cometsale.model.Address;
 import com.cometsale.model.UserDetails;
@@ -29,7 +32,7 @@ import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
 
 import com.cometsale.model.ProductDetails;
-import com.cometsale.mongodb.OldProductDB;
+import com.cometsale.mongodb.ProductDB;
 
 
 public class test {
@@ -89,25 +92,38 @@ public class test {
 	  System.out.println("firstName:"+findResult.getFirstName()+"\nNetID:"+findResult.getNetID());*/
       
       ProductDetails testProduct=new ProductDetails();
-      
+    
       
       File path = new File("C:\\Users\\Jiawku\\Desktop\\test.jpg");
-      testProduct.setProductid(8888);
-      
+      testProduct.setProductID("8888");
+      testProduct.setCategory("test");
       FileInputStream imageInFile;
 	try {
 	imageInFile = new FileInputStream(path);
       byte[] imageData = new byte[(int) path.length()];
 		imageInFile.read(imageData);
-	
+		imageInFile.close();
+		System.out.print(Integer.toString(imageData.length));
       testProduct.setImageBytes(imageData);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+    ProductDB.push(testProduct);
       
-//      System.out.println("Product:"+testProduct.encodeImageBytes);	
-     OldProductDB.push(testProduct);
+	ProductDetails findResult= ProductDB.find("8888","productID").get(0);
+    System.out.println("Product:"+findResult.getProductID());
+    System.out.print(Integer.toString(findResult.getImageBytes().length));
+    FileOutputStream fos;
+	try {
+		fos = new FileOutputStream("C:\\\\Users\\\\Jiawku\\\\Desktop\\\\testout.jpg");
+		fos.write(findResult.getImageBytes());
+		fos.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
       
     }
 }

@@ -3,7 +3,7 @@ package com.cometsale.model;
 
 public class ProductDetails {
 	
-	int productid;
+	String productID;
 	String productname;
     byte[] ImageBytes;
 	String productDesc;
@@ -24,11 +24,11 @@ public class ProductDetails {
 		this.ImageBytes=inputImageBytes;
 	}
 	
-	public int getProductid() {
-		return productid;
+	public String getProductID() {
+		return productID;
 	}
-	public void setProductid(int productid) {
-		this.productid = productid;
+	public void setProductID(String productid) {
+		this.productID = productid;
 	}
 	public String getProductname() {
 		return productname;

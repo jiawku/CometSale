@@ -30,7 +30,7 @@ public class ProductDB extends GenericClassDB {
 
         MongoCollection<ProductDetails> collection = database.getCollection("ProductDetails",ProductDetails.class);
     	
-    	collection.createIndex(Indexes.ascending("productId"));
+    	collection.createIndex(Indexes.ascending("productID"));
     	  //close the connection.
         closeConnection(mongoClient);
     }

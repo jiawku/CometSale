@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cometsale.model.Address;
 import com.cometsale.model.ProductDetails;
-import com.cometsale.model.UserDetails;
 import com.cometsale.mongodb.GenericClassDB;
-import com.cometsale.mongodb.UserDB;
+import com.cometsale.mongodb.ProductDB;
 import com.cometsale.uimodel.ProductResponseModel;
+import com.cometsale.mongodb.UserDB;
+import com.cometsale.model.UserDetails;
 
 @Controller
 public class ProductController {
@@ -73,11 +74,11 @@ public class ProductController {
 		// TODO: All Db class send some exceptions.
 		
 		//check if the resgistration number is already present.
-		ArrayList<UserDetails> resultList = UserDB.find(Integer.toString(newProduct.getProductid()),"netId");
-		UserDetails findResult;
+		ArrayList<ProductDetails> resultList = ProductDB.find(newProduct.getProductID(),"netId");
+		ProductDetails findResult;
 		
 		if(resultList!=null) {
-			 findResult= UserDB.find(Integer.toString(newProduct.getProductid()),"netId").get(0);
+			 findResult= ProductDB.find(newProduct.getProductID(),"netId").get(0);
 			 userModel.setErrorMessage("User Already Exists");
 				model.addAttribute("ERR_MSG", "UserAlready Exists");
 			return "registration_error";
