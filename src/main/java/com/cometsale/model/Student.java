@@ -11,4 +11,8 @@ public class Student {
 	public void setNetid(int netId) {
 		this.netId = netId;
 	}
+	
+	public void register() {}
+	
+	public void validate() {}
 }
