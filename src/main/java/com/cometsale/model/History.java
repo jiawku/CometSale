@@ -6,4 +6,6 @@ public class History {
 	private Product items;
 	private Date dataPurchased;
 	private int price;
+	
+	public void displayHistory() {}
 }
