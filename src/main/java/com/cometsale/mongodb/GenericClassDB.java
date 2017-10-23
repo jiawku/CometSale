@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public abstract class GenericClassDB {
     
-    protected static MongoClient initConnection() {
+    public static MongoClient initConnection() {
         
         MongoClientURI connectionString = new MongoClientURI("mongodb://Team5:UTDteam5@ds139124.mlab.com:39124/cometsale");
         MongoClient mongoClient = new MongoClient(connectionString);
@@ -36,7 +36,7 @@ public abstract class GenericClassDB {
         return database;
     }
     
-    protected static void closeConnection(MongoClient mongo){
+    public static void closeConnection(MongoClient mongo){
         mongo.close();
     }
     
