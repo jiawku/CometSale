@@ -25,7 +25,7 @@ import com.cometsale.model.ProductDetails;
 import com.cometsale.mongodb.ProductDB;
 
 @Controller
-public class ImageTestController {
+public class ImageController {
 
 /*	@RequestMapping(value = "/imageController/{imageId}")
 	@ResponseBody
@@ -37,20 +37,17 @@ public class ImageTestController {
 	}
 	*/
 	
-	 @RequestMapping(value = "/imageController/", method = RequestMethod.GET)
-	 public void showImage(HttpServletResponse response,HttpServletRequest request) 
-	          throws ServletException, IOException{
+	 @RequestMapping(value = "/imageController/{id}", method = RequestMethod.GET)
+	 public void showImage(@PathVariable String id,HttpServletResponse response,HttpServletRequest request) throws IOException {
 
-
-		ProductDetails findResult=(ProductDetails) ProductDB.find("test2","productName").get(0); 
+		ProductDetails findResult=(ProductDetails) ProductDB.find(id,"productID").get(0); 
 		byte[] imageData=findResult.getImageBytes();
-		System.out.print("imagesize:"+Integer.toString(imageData.length));
 		
 	    response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
 	    OutputStream stream = response.getOutputStream();
 	    stream.write(imageData);     
         stream.flush();
         stream.close();
-
+        
 	 }	
 }
