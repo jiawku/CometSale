@@ -1,6 +1,6 @@
 package com.cometsale.beans;
 
-
+//TODO: change to studentLogin.
 public class LoginBean {
 
 	private String netID;
