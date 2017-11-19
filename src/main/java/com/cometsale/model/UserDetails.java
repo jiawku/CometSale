@@ -4,10 +4,8 @@ import java.util.Date;
 
 public class UserDetails {
     private String netID;
-   // private String userName;
     private String  firstName;
     private String  lastName;
-   // private String  password;
     private String  phoneNumber;
     private Address homeAddress;
     private String email;

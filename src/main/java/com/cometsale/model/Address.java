@@ -6,15 +6,15 @@ public class Address {
     private String 	city;
     private String  state;
     private String  pinCode;
-    private String  AptNo;
+    private String  aptNo;
     
 
     
 	public String getAptNo() {
-		return AptNo;
+		return aptNo;
 	}
 	public void setAptNo(String aptNo) {
-		AptNo = aptNo;
+		aptNo = aptNo;
 	}
 	public String getStreetname() {
 		return streetname;
