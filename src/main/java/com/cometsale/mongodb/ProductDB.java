@@ -57,6 +57,7 @@ public class ProductDB extends GenericClassDB {
         MongoCollection<ProductDetails> collection = database.getCollection("ProductDetails",ProductDetails.class);
     	
         ArrayList<ProductDetails> output =  collection.find().limit(limit).into(new ArrayList());
+        int size = output.size();
         
         closeConnection(mongoClient);
         return output;

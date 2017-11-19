@@ -63,6 +63,11 @@ public class UserController {
 		return "homepage";
 	}
 	
+	@RequestMapping(value ="/viewWishlist", method = RequestMethod.GET)
+ 	public String directToWishList(HttpServletRequest request,ModelMap model){
+ 		return "viewwishlist";
+  	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request,ModelMap model) {
 		return "loginpage";
@@ -71,7 +76,7 @@ public class UserController {
 	@RequestMapping(value ="/homepage", method = RequestMethod.GET)
 	 	public String directToHomepage(HttpServletRequest request,ModelMap model){
 	 		return "homepage";
-	  	}
+	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(HttpServletRequest request,ModelMap model) {
 		
