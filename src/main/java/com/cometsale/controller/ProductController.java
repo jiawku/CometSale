@@ -115,4 +115,22 @@ public class ProductController {
 		return "successfulproductadded";
 	}
 
+
+	@RequestMapping(value = "/removeFromWishlist" ,method = RequestMethod.GET)
+	public String removeFromWishlist(ModelMap model) {
+		System.out.println("Successfully removed from wishlist");
+		return "removefromwishlist";
+	}
+	
+	@RequestMapping(value = "/addToWishlist" ,method = RequestMethod.GET)
+	public String addToWishlist(ModelMap model) {
+		System.out.println("Added successfully to wishlist");
+		return "successfuladdedtowishlist";
+	}
+	
+	@RequestMapping(value = "/lockProduct" ,method = RequestMethod.GET)
+	public String lockProduct(ModelMap model) {
+		System.out.println("Successfully Locked the Product");
+		return "successfullocked";
+	}
 }

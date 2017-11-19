@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home Page</title>
+<title>My Wish List</title>
 <link href="resources/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <style>
 #registration{
@@ -66,7 +66,7 @@
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="viewWishlist">View WishList</a>
+                            <a href="viewWishlist">View Wishlist</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
@@ -121,7 +121,8 @@
                   <th>City</th>
                   <th>State</th>
                   <th>PinCode</th>
-                  <th>Add to WishList</th>				  
+                  <th>Remove from WishList</th>
+                  <th>Lock the Product</th>				  
                 </tr>
                 
                 </table>
@@ -142,7 +143,8 @@
                   <th>City</th>
                   <th>State</th>
                   <th>PinCode</th>
-                  <th>Add to WishList</th>				  
+                  <th>Remove from WishList</th>
+                  <th>Lock the Product</th>				  
                 </tr>
         <% 
         ArrayList<ProductDetails> records = new ArrayList<ProductDetails>();
@@ -161,7 +163,8 @@
       	<td name ="city" value=<%records.get(i).getPickupAddress().getCity();%>><%out.print(records.get(i).getPickupAddress().getCity());%></td>
       	<td name ="state" value=<%records.get(i).getPickupAddress().getState();%>><%out.print(records.get(i).getPickupAddress().getState());%></td>
       	<td name ="pinCode" value=<%records.get(i).getPickupAddress().getPinCode();%>><%out.print(records.get(i).getPickupAddress().getPinCode());%></td>
-      	<td name ="addToWishlist"><a href="addToWishlist">Add To WishList</a></td>
+      	<td name="removeFromWishlist"><a href="removeFromWishlist">Remove From Wishlist</a></td>
+      	<td name ="lockProduct"><a href="lockProduct">Lock the Product</a></td>
       	<br>
       	<%
       	}
