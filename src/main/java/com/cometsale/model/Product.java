@@ -49,7 +49,7 @@ public class Product {
 	public void setStatus(ProductStatus status) {
 		this.status=status;
 	}
-	public void setProductDetials(ProductDetails details) {
+	public void setProductDetails(ProductDetails details) {
 		this.details=details;
 	}
 	public ProductDetails getProductDetails() {

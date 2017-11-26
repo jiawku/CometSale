@@ -144,12 +144,14 @@ public class test {
 //    }
     	
     Student user=UserDB.find("testuser","netid").get(0);
-    Product product=ProductDB.find("dfb89443-4016-48a1-9ee4-77a232e21c54","productId").get(0);
+    Product product=ProductDB.find("b83da9af-8b04-4713-a424-186369b4d2bb","productId").get(0);
 
     user.getWishList().addProductToWishlist(product);
     System.out.println(user.getWishList().getWishList().get(0).getProductDetails().toString());
     
     UserDB.updateWishList(user);
+    
+    
     
     
     }
