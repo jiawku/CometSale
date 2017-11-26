@@ -96,7 +96,7 @@ public class UserController {
 
 		newUser.setNetid(request.getParameter("netID"));
 		//newUser.setUserName(request.getParameter("username"));
-		newUser.details.setFirstName(request.getParameter("firstName"));
+		newUser.details.setFirstName(request.getParameter("firs tName"));
 		newUser.details.setLastName(request.getParameter("lastName"));
 		//TODO:password.
 		newUser.details.setEmail(request.getParameter("email"));

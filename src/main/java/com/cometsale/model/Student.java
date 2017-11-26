@@ -6,6 +6,11 @@ public class Student {
 	WishList wishList;
 	public StudentDetails details;
 	
+	public Student(){
+		this.wishList=new WishList();
+		this.details=new StudentDetails();
+	}
+	
 	public String getNetid() {
 		return netId;
 	}
