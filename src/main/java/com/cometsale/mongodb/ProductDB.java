@@ -3,14 +3,17 @@ package com.cometsale.mongodb;
 import static com.mongodb.client.model.Filters.eq;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import org.bson.Document;
 
 import com.cometsale.model.Product;
 import com.cometsale.model.Student;
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.Block;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -47,9 +50,23 @@ public class ProductDB extends GenericClassDB {
         MongoDatabase database = connectDatabase(mongoClient);
         MongoCollection<Product> collection = database.getCollection("Product",Product.class);
     	
-        ArrayList<Product> output = collection.find(Filters.text(query))
-        									.projection(Projections.metaTextScore("score"))
-        									.sort(Sorts.metaTextScore("score")).into(new ArrayList());
+//        ArrayList<Product> output = collection.find(Filters.text(query))
+//        									.projection(Projections.metaTextScore("score"))
+//        									.sort(Sorts.metaTextScore("score")).into(new ArrayList());
+                
+        Document regQuery = new Document();
+        regQuery.append("$regex", Pattern.quote(query));
+        regQuery.append("$options", "i");
+
+        Document findQuery1 =  new Document(),findQuery2 = new Document();
+        findQuery1.append("productDetails.productName", regQuery);
+        findQuery2.append("productDetails.productDesc", regQuery);
+
+        BasicDBList or = new BasicDBList();
+        or.add(findQuery1);
+        or.add(findQuery2);
+        BasicDBObject inquery = new BasicDBObject("$or", or);
+        ArrayList<Product> output = collection.find(inquery).into(new ArrayList());
         
         closeConnection(mongoClient);
         return output;
@@ -67,6 +84,7 @@ public class ProductDB extends GenericClassDB {
         MongoDatabase database = connectDatabase(mongoClient);
         MongoCollection<Product> collection = database.getCollection("Product",Product.class);
     	
+        
         ArrayList<Product> output =  collection.find().limit(limit).into(new ArrayList());
         int size = output.size();
         
