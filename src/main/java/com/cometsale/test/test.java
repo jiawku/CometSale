@@ -138,22 +138,25 @@ public class test {
 //	}
 
 
-//    ArrayList<Product> returnList=ProductDB.search("ipad");
-//    for(Product i:returnList) {
-//    	System.out.println(i.toString());
-//    }
+    ArrayList<Product> returnList=ProductDB.search("es");
+    System.out.println(returnList.size());
+    for(Product i:returnList) {
+    	System.out.println(i.getProductDetails().toString());
+    }
     	
-    Student user=UserDB.find("testuser","netid").get(0);
-    Product product=ProductDB.find("b83da9af-8b04-4713-a424-186369b4d2bb","productId").get(0);
+    
+ /*   	Student user=UserDB.find("testuser","netid").get(0);
+    Product product=ProductDB.find("83d3d18d-9e46-4a39-b072-24394025eea4","productId").get(0);
 
-    user.addProductToWishlist(product);
-    System.out.println(user.fetchWishListArray().toString());
-    System.out.println(ProductDB.fetchFromIDArray(user.fetchWishListArray()).get(0).getProductDetails().toString());
+    	
+  user.addProductToWishlist(product);
+    System.out.println(user.getWishList().getWishList().size());
+//    System.out.println(ProductDB.fetchFromIDArray(user.fetchWishListArray()).get(0).getProductDetails().toString());
     
-//    UserDB.updateWishList(user);
-    
-    
-    
+   UserDB.updateWishList(user);
+  */
+	
+
     
     }
 }

@@ -5,6 +5,15 @@ import java.util.ArrayList;
 
 public class WishList {
 	private ArrayList<String> intresetedProduct;
+	private int test;
+	
+	public void setTest(int i) {
+		this.test=i;
+	}
+	
+	public int getTest() {
+		return this.test;
+	}
 	
 	public WishList(){
 		this.intresetedProduct=new ArrayList<String>();
@@ -26,6 +35,7 @@ public class WishList {
 	public void setWishList(ArrayList<String> wishlist) {
 		this.intresetedProduct=wishlist;
 	}
+
 	
 	public ArrayList<String> getWishList() {
 		return this.intresetedProduct;

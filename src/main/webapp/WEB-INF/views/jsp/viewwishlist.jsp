@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "com.cometsale.model.Product" %>
 <%@ page import = "com.cometsale.mongodb.ProductDB" %>
+<%@ page import="com.cometsale.model.Student" %>
+<%@ page import="com.cometsale.mongodb.UserDB" %>
 <%@ page import="java.util.ArrayList" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -148,7 +150,18 @@
                 </tr>
         <% 
         ArrayList<Product> records = new ArrayList<Product>();
-        records = ProductDB.fetchAll();
+        session = request.getSession();
+        String netID=session.getAttribute("NetID").toString();
+        
+        ArrayList<Student> findResult= UserDB.find(netID,"netid");
+		if(findResult==null){
+			//TODO: handle user not found.
+			System.out.println("User Not found!");
+		}
+		Student user = findResult.get(0);
+        System.out.println("viewWish "+user.getNetid());
+        records = ProductDB.fetchFromIDArray(user.fetchWishListArray());
+        System.out.println("viewWishList "+user.getWishList().size());
         for(int i=0;i<records.size();i++){
         %>
  		<tr>
