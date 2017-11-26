@@ -161,7 +161,7 @@
 		Student user = findResult.get(0);
         System.out.println("viewWish "+user.getNetid());
         records = ProductDB.fetchFromIDArray(user.fetchWishListArray());
-        System.out.println("viewWishList "+user.getWishList().size());
+        System.out.println("viewWishList "+user.fetchWishListArray().size());
         for(int i=0;i<records.size();i++){
         %>
  		<tr>
