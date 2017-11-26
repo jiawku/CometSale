@@ -63,6 +63,11 @@ public class UserController {
 		return "homepage";
 	}
 	
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, ModelMap model){
+		return "logout";
+	}
+	
 	@RequestMapping(value ="/viewWishlist", method = RequestMethod.GET)
  	public String directToWishList(HttpServletRequest request,ModelMap model){
  		return "viewwishlist";

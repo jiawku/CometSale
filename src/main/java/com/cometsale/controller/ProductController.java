@@ -122,6 +122,7 @@ public class ProductController {
 		return "removefromwishlist";
 	}
 	
+	
 	@RequestMapping(value = "/addToWishlist" ,method = RequestMethod.GET)
 	public String addToWishlist(ModelMap model) {
 		System.out.println("Added successfully to wishlist");
