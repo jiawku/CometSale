@@ -32,7 +32,7 @@ public class ProductController {
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String search(HttpServletRequest request, ModelMap model){
-		System.out.println("Searching the product");
+		System.out.println("Searching the product entered");
 		ProductDB product = new ProductDB();
 		ArrayList<Product> records = product.search(request.getParameter("searched"));
 		return "searchedpage";
