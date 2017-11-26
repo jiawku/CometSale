@@ -164,7 +164,7 @@
                     <tbody>
                       <tr>
                         <td>NetID:</td>
-                        <td>${userDetails.getNetID()}</td>
+                        <td>${user.getNetid()}</td>
                       </tr>
                       <tr>
                         <td>FirstName:</td>

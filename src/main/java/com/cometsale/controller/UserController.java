@@ -13,7 +13,6 @@ import com.cometsale.authenticate.SessionManagement;
 import com.cometsale.beans.LoginBean;
 import com.cometsale.model.Address;
 import com.cometsale.model.Student;
-import com.cometsale.model.StudentDetails;
 import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
@@ -26,14 +25,15 @@ public class UserController {
 			String netID = (String) request.getSession().getAttribute(SessionManagement.SessionNetID);
 			
 			//check if the Netid exists in database.
-			ArrayList<Student> findResult= UserDB.find(netID,"netId");
+			ArrayList<Student> findResult= UserDB.find(netID,"netid");
 			if(findResult==null){
 				//TODO: handle user not found.
 				System.out.println("User Not found!");
 				return "userinfo";
 			}
 			Student user = findResult.get(0);
-			model.addAttribute("userDetails",user);
+			model.addAttribute("user",user);
+			model.addAttribute("userDetails",user.details);
 			System.out.println(user.getNetid());
 			
 	 		return "userinfo";
