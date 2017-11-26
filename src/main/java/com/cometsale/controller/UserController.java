@@ -26,7 +26,7 @@ public class UserController {
 			String netID = (String) request.getSession().getAttribute(SessionManagement.SessionNetID);
 			
 			//check if the Netid exists in database.
-			ArrayList<Student> findResult= UserDB.find(netID,"netID");
+			ArrayList<Student> findResult= UserDB.find(netID,"netId");
 			if(findResult==null){
 				//TODO: handle user not found.
 				System.out.println("User Not found!");
