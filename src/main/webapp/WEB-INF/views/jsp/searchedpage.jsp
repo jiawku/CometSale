@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "com.cometsale.model.Product" %>
 <%@ page import = "com.cometsale.mongodb.ProductDB" %>
+<%@ page import = "com.cometsale.controller.ProductController" %>
 <%@ page import="java.util.ArrayList" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>My Wish List</title>
+<title>Searched Page</title>
 <link href="resources/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <style>
 #registration{
@@ -66,7 +67,7 @@
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="viewWishlist">View Wishlist</a>
+                            <a href="viewWishlist">View WishList</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
@@ -90,9 +91,9 @@
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         
                         <li>
-                        <form id="search" style="margin:9px" action="availableauctions">
+                        <form id="search" style="margin:9px" action="search">
                         <a href="#" style="color:#777777">Search</a>
-                        <input type="text">
+                        <input name="searched" type="text">
                         </form>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
@@ -121,8 +122,7 @@
                   <th>City</th>
                   <th>State</th>
                   <th>PinCode</th>
-                  <th>Remove from WishList</th>
-                  <th>Lock the Product</th>				  
+                  <th>Add to WishList</th>				  
                 </tr>
                 
                 </table>
@@ -143,28 +143,13 @@
                   <th>City</th>
                   <th>State</th>
                   <th>PinCode</th>
-                  <th>Remove from WishList</th>
-                  <th>Lock the Product</th>				  
+                  <th>Add to WishList</th>				  
                 </tr>
         <% 
-        ArrayList<Product> records = new ArrayList<Product>();
-
-        session = request.getSession();
-        String netID=session.getAttribute("NetID").toString();
-        
-        ArrayList<Student> findResult= UserDB.find(netID,"netid");
-		if(findResult==null){
-			//TODO: handle user not found.
-			System.out.println("User Not found!");
-		}
-		Student user = findResult.get(0);
-        System.out.println("viewWish "+user.getNetid());
-        records = ProductDB.fetchFromIDArray(user.fetchWishListArray());
-        System.out.println("viewWishList "+user.fetchWishListArray().size());
-
+        ArrayList<Product> records = ProductDB.search(request.getParameter("searched"));
         for(int i=0;i<records.size();i++){
         %>
- 		<tr>
+        <tr>
       	<td name = "image" ><img src="imageController/<%out.println(records.get(i).getProductId());%>" width="80"height="80"></img></td>
       	<td name ="productName" value=<%records.get(i).getProductDetails().getProductName();%>><%out.print(records.get(i).getProductDetails().getProductName());%></td>      	
       	<td name ="productDesc" value=<%records.get(i).getProductDetails().getProductDesc();%>><%out.print(records.get(i).getProductDetails().getProductDesc());%></td>      	

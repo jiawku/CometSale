@@ -90,9 +90,9 @@
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         
                         <li>
-                        <form id="search" style="margin:9px" action="availableauctions">
+                        <form id="search" style="margin:9px" action="search">
                         <a href="#" style="color:#777777">Search</a>
-                        <input type="text">
+                        <input name="searched" type="text">
                         </form>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
