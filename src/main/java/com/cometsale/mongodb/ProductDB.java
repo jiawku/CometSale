@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import org.bson.Document;
 
-import com.cometsale.model.ProductDetails;
-import com.cometsale.model.StudentDetails;
+import com.cometsale.model.Product;
+import com.cometsale.model.Student;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
@@ -20,23 +20,23 @@ import com.mongodb.client.model.Sorts;
 
 public class ProductDB extends GenericClassDB {
 
-    public static void push(ProductDetails inputProduct) {
+    public static void push(Product inputProduct) {
         GenericClassDB.push(inputProduct);
     }
 
 
-    public static ArrayList<ProductDetails> find(String searchString, String searchAttribute) {
-        return (ArrayList<ProductDetails>) GenericClassDB.find(ProductDetails.class,searchString,searchAttribute);
+    public static ArrayList<Product> find(String searchString, String searchAttribute) {
+        return (ArrayList<Product>) GenericClassDB.find(Product.class,searchString,searchAttribute);
     }
     
-    public static ArrayList<ProductDetails> search(String query) {
+    public static ArrayList<Product> search(String query) {
     	
    	    
 	    MongoClient mongoClient =initConnection();
         MongoDatabase database = connectDatabase(mongoClient);
-        MongoCollection<ProductDetails> collection = database.getCollection("ProductDetails",ProductDetails.class);
+        MongoCollection<Product> collection = database.getCollection("Product",Product.class);
     	
-        ArrayList<ProductDetails> output = collection.find(Filters.text(query))
+        ArrayList<Product> output = collection.find(Filters.text(query))
         									.projection(Projections.metaTextScore("score"))
         									.sort(Sorts.metaTextScore("score")).into(new ArrayList());
         
@@ -45,18 +45,18 @@ public class ProductDB extends GenericClassDB {
     
     }
     
-    public static ArrayList<ProductDetails> fetchAll() {
+    public static ArrayList<Product> fetchAll() {
     	return fetchAll(25);
     }
     
-    public static ArrayList<ProductDetails> fetchAll(int limit) {
+    public static ArrayList<Product> fetchAll(int limit) {
     	
    	    
 	    MongoClient mongoClient =initConnection();
         MongoDatabase database = connectDatabase(mongoClient);
-        MongoCollection<ProductDetails> collection = database.getCollection("ProductDetails",ProductDetails.class);
+        MongoCollection<Product> collection = database.getCollection("Product",Product.class);
     	
-        ArrayList<ProductDetails> output =  collection.find().limit(limit).into(new ArrayList());
+        ArrayList<Product> output =  collection.find().limit(limit).into(new ArrayList());
         int size = output.size();
         
         closeConnection(mongoClient);
@@ -66,7 +66,7 @@ public class ProductDB extends GenericClassDB {
 
     
     public static void update(String searchString, String searchAttribute,String updateString,String updateAttribute) {
-        GenericClassDB.update(ProductDetails.class,searchString,searchAttribute,updateString,updateAttribute);
+        GenericClassDB.update(Product.class,searchString,searchAttribute,updateString,updateAttribute);
     }
     
     public static void uniqueConstraint() {
@@ -75,7 +75,7 @@ public class ProductDB extends GenericClassDB {
         
         //push the object
 
-        MongoCollection<ProductDetails> collection = database.getCollection("ProductDetails",ProductDetails.class);
+        MongoCollection<Product> collection = database.getCollection("Product",Product.class);
     	
     	collection.createIndex(Indexes.ascending("productID"));
     	collection.createIndex(Indexes.text("productDesc"));
@@ -84,7 +84,7 @@ public class ProductDB extends GenericClassDB {
     }
     
     public static boolean productIDinDB(String inputID) {
-    	ArrayList<ProductDetails> result=find(inputID, "productID");
+    	ArrayList<Product> result=find(inputID, "productID");
     	if(result.isEmpty()) {
     		return false;
     	} else {

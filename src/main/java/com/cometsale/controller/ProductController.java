@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cometsale.model.Address;
+import com.cometsale.model.Product;
 import com.cometsale.model.ProductDetails;
 import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.ProductDB;
@@ -33,25 +34,25 @@ public class ProductController {
 	public String register(HttpServletRequest request,ModelMap model, @RequestParam("image") MultipartFile file)  {
 		
 		System.out.println("Added Product");
-		ProductDetails newProduct = new ProductDetails();
+		Product newProduct = new Product();
 		
 		//default response
 		
 		ProductResponseModel userModel = new ProductResponseModel();
 		userModel.setDefaultValue();
 
-		newProduct.setProductName(request.getParameter("productName"));
-		newProduct.setCategory(request.getParameter("category"));
-		newProduct.setOfferPrice(Double.parseDouble(request.getParameter("offerPrice")));
-		newProduct.setQuality(request.getParameter("quality"));
-		newProduct.setProductDesc(request.getParameter("productDescription"));
+		newProduct.details.setProductName(request.getParameter("productName"));
+		newProduct.details.setCategory(request.getParameter("category"));
+		newProduct.details.setOfferPrice(Double.parseDouble(request.getParameter("offerPrice")));
+		newProduct.details.setQuality(request.getParameter("quality"));
+		newProduct.details.setProductDesc(request.getParameter("productDescription"));
 		if(!file.isEmpty()) {
 			
 			byte[] bytes;
 			try {
 				bytes = file.getBytes();
-				newProduct.setImageBytes(bytes);
-				System.out.println("size"+Integer.toString(bytes.length)+"uploaded size:"+Integer.toString(newProduct.getImageBytes().length));
+				newProduct.details.setImageBytes(bytes);
+				System.out.println("size"+Integer.toString(bytes.length)+"uploaded size:"+Integer.toString(newProduct.details.getImageBytes().length));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -65,23 +66,23 @@ public class ProductController {
 		houseAddress.setState(request.getParameter("state"));
 		houseAddress.setStreetname(request.getParameter("streetName"));
 		houseAddress.setAptNo(request.getParameter("AptNo"));
-		newProduct.setPickupAddress(houseAddress);
+		newProduct.details.setPickupAddress(houseAddress);
 
-		System.out.println(newProduct.getProductID());
-		System.out.println(newProduct.getProductDesc());
-		System.out.println(newProduct.getPickupAddress().getCity());
+		System.out.println(newProduct.getProductId());
+		System.out.println(newProduct.details.getProductDesc());
+		System.out.println(newProduct.details.getPickupAddress().getCity());
 		   
 
-		if(newProduct.getProductDesc() == null || 
-				newProduct.getProductName() == null || 
+		if(newProduct.details.getProductDesc() == null || 
+				newProduct.details.getProductName() == null || 
 		//   newUser.getUserName() == null ||
 		 //  newUser.getPassword() == null ||
-		   newProduct.getOfferPrice() == 0.0 || 
-		   newProduct.getCategory() == null || 
-		   newProduct.getPickupAddress().getCity() == null || 
-		   newProduct.getPickupAddress().getPinCode() == null || 
-		   newProduct.getPickupAddress().getState() == null || 
-		   newProduct.getPickupAddress().getStreetname() == null){
+		   newProduct.details.getOfferPrice() == 0.0 || 
+		   newProduct.details.getCategory() == null || 
+		   newProduct.details.getPickupAddress().getCity() == null || 
+		   newProduct.details.getPickupAddress().getPinCode() == null || 
+		   newProduct.details.getPickupAddress().getState() == null || 
+		   newProduct.details.getPickupAddress().getStreetname() == null){
 		   model.addAttribute("ERR_MSG", "Enter all fields correctly");
 		   return "registration_error";
 		}
@@ -93,7 +94,7 @@ public class ProductController {
 		// TODO: All Db class send some exceptions.
 		
 		//check if the resgistration number is already present.
-		ArrayList<ProductDetails> resultList = ProductDB.find(newProduct.getProductID(),"productID");
+		ArrayList<Product> resultList = ProductDB.find(newProduct.getProductId(),"productID");
 		
 		if(!(resultList.isEmpty())) {
 			 userModel.setErrorMessage("Product Already Exists");

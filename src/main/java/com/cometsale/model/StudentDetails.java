@@ -3,7 +3,6 @@ package com.cometsale.model;
 import java.util.Date;
 
 public class StudentDetails {
-    private String netID;
     private String  firstName;
     private String  lastName;
     private String  phoneNumber;
@@ -13,18 +12,10 @@ public class StudentDetails {
 
 	public StudentDetails(){}
     
-    public StudentDetails(String ID,String Username,String FirstName,String LastName){
-        this.netID=ID;
+    public StudentDetails(String Username,String FirstName,String LastName){
         this.firstName=FirstName;
         this.lastName=LastName;
     }
-    public String getNetID() {
-		return netID;
-	}
-
-	public void setNetID(String netID) {
-		this.netID = netID;
-	}
 
 //	public String getPassword() {
 //	//	return password;S
@@ -87,8 +78,7 @@ public class StudentDetails {
  	public String toString() {
  		String printString;
  		
- 		printString = "netID : "+ netID +
- 	//			" userName : "+ userName +
+ 		printString = //			" userName : "+ userName +
  				" firstName : " + firstName +
  				" lastName :" + lastName +
  	//			" password :"+ password +
@@ -104,5 +94,6 @@ public class StudentDetails {
 		
  		
  	}
+
     
 }

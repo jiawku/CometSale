@@ -1,14 +1,14 @@
 package com.cometsale.model;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.cometsale.mongodb.ProductDB;
 
 public class ProductDetails {
-	
-	String productID;
+
 	String productName;
-	String ownerID;
+	Student seller;
     byte[] imageBytes;
 	String productDesc;
 	double offerPrice;
@@ -17,15 +17,7 @@ public class ProductDetails {
 	Address pickupAddress;
 	String category;
 	
-	public ProductDetails(){
-		 String uuid = UUID.randomUUID().toString();
-		 while(ProductDB.productIDinDB(uuid)) {
-			 uuid = UUID.randomUUID().toString();
-		 } 
-		 setProductID(uuid);
-		 setStatus("available");
-	}
-	
+
 	
 	public byte[] getImageBytes(){
 		return imageBytes;
@@ -33,20 +25,6 @@ public class ProductDetails {
 	
 	public void setImageBytes(byte[] inputImageBytes){
 		this.imageBytes=inputImageBytes;
-	}
-	
-	public String getProductID() {
-		return productID;
-	}
-	public void setProductID(String productid) {
-		this.productID = productid;
-	}
-	
-	public String getOwnerID() {
-		return ownerID;
-	}
-	public void setOwnerID(String ownerid) {
-		this.ownerID = ownerid;
 	}
 	
 	public String getProductName() {
@@ -93,12 +71,18 @@ public class ProductDetails {
 		this.category = category;
 	}
 	
+	public Student getSeller() {
+		return seller;
+	}
+	public void setSeller(Student seller) {
+		this.seller = seller;
+	}
+
 	public String toString() {
  		String printString;
  		
  		printString = "productName : "+ getProductName() +
  					  "\nproductDescription : " + getProductDesc() +
- 					  "\nownerID:"+ getOwnerID() +
  					  "\nstatus:"+ getStatus()+"\n";
 
  		return printString;

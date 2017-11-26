@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cometsale.model.Product;
 import com.cometsale.model.ProductDetails;
 import com.cometsale.mongodb.ProductDB;
 
@@ -40,8 +41,8 @@ public class ImageController {
 	 @RequestMapping(value = "/imageController/{id}", method = RequestMethod.GET)
 	 public void showImage(@PathVariable String id,HttpServletResponse response,HttpServletRequest request) throws IOException {
 
-		ProductDetails findResult=(ProductDetails) ProductDB.find(id,"productID").get(0); 
-		byte[] imageData=findResult.getImageBytes();
+		Product findResult=(Product) ProductDB.find(id,"productID").get(0); 
+		byte[] imageData=findResult.details.getImageBytes();
 		
 	    response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
 	    OutputStream stream = response.getOutputStream();

@@ -5,7 +5,10 @@ public class Offer {
 	Student buyer;
 	int price;
 	
-	
+	public Offer(Student buyer,int price) {
+		this.buyer=buyer;
+		this.price=price;
+	}
 	
 	public Student getBuyer() {
 		return buyer;

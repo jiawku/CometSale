@@ -2,14 +2,16 @@ package com.cometsale.model;
 
 public class Student {
 
-	int netId;
-
-	public int getNetid() {
+	String netId;
+	WishList wishList;
+	public StudentDetails details;
+	
+	public String getNetid() {
 		return netId;
 	}
 
-	public void setNetid(int netId) {
-		this.netId = netId;
+	public void setNetid(String string) {
+		this.netId = string;
 	}
 	
 	public void register() {}

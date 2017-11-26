@@ -1,7 +1,8 @@
 package com.cometsale.mongodb;
 
 import java.util.ArrayList;
-import com.cometsale.model.StudentDetails;
+
+import com.cometsale.model.Student;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -9,17 +10,17 @@ import com.mongodb.client.model.Indexes;
 
 public class UserDB extends GenericClassDB {
 
-    public static void push(StudentDetails inputUser) {
+    public static void push(Student inputUser) {
         GenericClassDB.push(inputUser);
     }
 
 
-    public static ArrayList<StudentDetails> find(String searchString, String searchAttribute) {
-        return (ArrayList<StudentDetails>) GenericClassDB.find(StudentDetails.class,searchString,searchAttribute);
+    public static ArrayList<Student> find(String searchString, String searchAttribute) {
+        return (ArrayList<Student>) GenericClassDB.find(Student.class,searchString,searchAttribute);
     }
     
     public static void update(String searchString, String searchAttribute,String updateString,String updateAttribute) {
-        GenericClassDB.update(StudentDetails.class,searchString,searchAttribute,updateString,updateAttribute);
+        GenericClassDB.update(Student.class,searchString,searchAttribute,updateString,updateAttribute);
     }
 /*    public static <T> ArrayList<T> find(String inputString, String searchAttribute) {
         //get a client and database
@@ -43,7 +44,7 @@ public class UserDB extends GenericClassDB {
         
         //push the object
 
-        MongoCollection<StudentDetails> collection = database.getCollection("UserDetails",StudentDetails.class);
+        MongoCollection<Student> collection = database.getCollection("Student",Student.class);
     	
     	collection.createIndex(Indexes.ascending("netID"));
     	  //close the connection.

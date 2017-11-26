@@ -29,6 +29,7 @@ import org.bson.Document;
 import org.springframework.security.util.FieldUtils;
 
 import com.cometsale.model.Address;
+import com.cometsale.model.Product;
 import com.cometsale.model.StudentDetails;
 import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
@@ -135,8 +136,8 @@ public class test {
 //	}
 
 
-    ArrayList<ProductDetails> returnList=ProductDB.search("ipad");
-    for(ProductDetails i:returnList) {
+    ArrayList<Product> returnList=ProductDB.search("ipad");
+    for(Product i:returnList) {
     	System.out.println(i.toString());
     }
     }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cometsale.authenticate.SessionManagement;
 import com.cometsale.beans.LoginBean;
 import com.cometsale.model.Address;
+import com.cometsale.model.Student;
 import com.cometsale.model.StudentDetails;
 import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.UserDB;
@@ -25,15 +26,15 @@ public class UserController {
 			String netID = (String) request.getSession().getAttribute(SessionManagement.SessionNetID);
 			
 			//check if the Netid exists in database.
-			ArrayList<StudentDetails> findResult= UserDB.find(netID,"netID");
+			ArrayList<Student> findResult= UserDB.find(netID,"netID");
 			if(findResult==null){
 				//TODO: handle user not found.
 				System.out.println("User Not found!");
 				return "userinfo";
 			}
-			StudentDetails user = findResult.get(0);
+			Student user = findResult.get(0);
 			model.addAttribute("userDetails",user);
-			System.out.println(user.getNetID());
+			System.out.println(user.getNetid());
 			
 	 		return "userinfo";
 	 	}
@@ -81,20 +82,20 @@ public class UserController {
 	public String register(HttpServletRequest request,ModelMap model) {
 		
 		System.out.println("entered Register");
-		StudentDetails newUser = new StudentDetails();
+		Student newUser = new Student();
 		
 		//default response
 		
 		UserResponseModel userModel = new UserResponseModel();
 		userModel.setDefaultValue();
 
-		newUser.setNetID(request.getParameter("netID"));
+		newUser.setNetid(request.getParameter("netID"));
 		//newUser.setUserName(request.getParameter("username"));
-		newUser.setFirstName(request.getParameter("firstName"));
-		newUser.setLastName(request.getParameter("lastName"));
+		newUser.details.setFirstName(request.getParameter("firstName"));
+		newUser.details.setLastName(request.getParameter("lastName"));
 		//TODO:password.
-		newUser.setEmail(request.getParameter("email"));
-		newUser.setPhoneNumber(request.getParameter("phoneNumber"));
+		newUser.details.setEmail(request.getParameter("email"));
+		newUser.details.setPhoneNumber(request.getParameter("phoneNumber"));
 		
 		Address houseAddress = new Address();
 		houseAddress.setCity(request.getParameter("city"));
@@ -102,19 +103,19 @@ public class UserController {
 		houseAddress.setState(request.getParameter("state"));
 		houseAddress.setStreetname(request.getParameter("streetName"));
 		houseAddress.setAptNo(request.getParameter("AptNo"));
-		newUser.setHomeAddress(houseAddress);
+		newUser.details.setHomeAddress(houseAddress);
 
 
-		if(newUser.getNetID() == null || 
-		   newUser.getLastName() == null || 
+		if(newUser.getNetid() == null || 
+		   newUser.details.getLastName() == null || 
 		//   newUser.getUserName() == null ||
 		 //  newUser.getPassword() == null ||
-		   newUser.getEmail() == null || 
-		   newUser.getPhoneNumber() == null || 
-		   newUser.getHomeAddress().getCity() == null || 
-		   newUser.getHomeAddress().getPinCode() == null || 
-		   newUser.getHomeAddress().getState() == null || 
-		   newUser.getHomeAddress().getStreetname() == null){
+		   newUser.details.getEmail() == null || 
+		   newUser.details.getPhoneNumber() == null || 
+		   newUser.details.getHomeAddress().getCity() == null || 
+		   newUser.details.getHomeAddress().getPinCode() == null || 
+		   newUser.details.getHomeAddress().getState() == null || 
+		   newUser.details.getHomeAddress().getStreetname() == null){
 		   model.addAttribute("ERR_MSG", "Enter all fields correctly");
 		   return "registration_error";
 		}
@@ -126,11 +127,11 @@ public class UserController {
 		// TODO: All Db class send some exceptions.
 		
 		//check if the resgistration number is already present.
-		ArrayList<StudentDetails> resultList = UserDB.find(newUser.getNetID(),"netID");
-		StudentDetails findResult;
+		ArrayList<Student> resultList = UserDB.find(newUser.getNetid(),"netID");
+		Student findResult;
 		
 		if(!(resultList.isEmpty())) {
-			 findResult= UserDB.find(newUser.getNetID(),"netID").get(0);
+			 findResult= UserDB.find(newUser.getNetid(),"netID").get(0);
 			 userModel.setErrorMessage("User Already Exists");
 				model.addAttribute("ERR_MSG", "UserAlready Exists");
 			return "registration_error";
