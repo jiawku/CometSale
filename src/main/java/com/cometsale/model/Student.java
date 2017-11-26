@@ -1,5 +1,7 @@
 package com.cometsale.model;
 
+import java.util.ArrayList;
+
 public class Student {
 
 	String netId;
@@ -23,8 +25,17 @@ public class Student {
 		return wishList;
 	}
 	
+	public ArrayList<String> fetchWishListArray() {
+		return wishList.getWishList();
+	}
+	
+	
 	public void setWishList(WishList wishList) {
 		this.wishList=wishList;
+	}
+	
+	public void addProductToWishlist(Product p) {
+		this.wishList.addProductToWishlist(p);
 	}
 	
 	public void register() {}

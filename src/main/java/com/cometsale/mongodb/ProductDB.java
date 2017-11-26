@@ -8,7 +8,9 @@ import org.bson.Document;
 
 import com.cometsale.model.Product;
 import com.cometsale.model.Student;
+import com.mongodb.BasicDBObject;
 import com.mongodb.Block;
+import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -27,6 +29,15 @@ public class ProductDB extends GenericClassDB {
 
     public static ArrayList<Product> find(String searchString, String searchAttribute) {
         return (ArrayList<Product>) GenericClassDB.find(Product.class,searchString,searchAttribute);
+    }
+    
+    public static Product getFromPid(String pid) {
+    	if (productIDinDB(pid)) {
+    		ArrayList<Product> fetchResult=(ArrayList<Product>) GenericClassDB.find(Product.class,pid,"productId");
+    		return fetchResult.get(0);
+    	} else {
+    		return null; 
+    	}
     }
     
     public static ArrayList<Product> search(String query) {
@@ -77,14 +88,14 @@ public class ProductDB extends GenericClassDB {
 
         MongoCollection<Product> collection = database.getCollection("Product",Product.class);
     	
-    	collection.createIndex(Indexes.ascending("productID"));
+    	collection.createIndex(Indexes.ascending("productId"));
     	collection.createIndex(Indexes.text("productDesc"));
     	  //close the connection.
         closeConnection(mongoClient);	
     }
     
     public static boolean productIDinDB(String inputID) {
-    	ArrayList<Product> result=find(inputID, "productID");
+    	ArrayList<Product> result=find(inputID, "productId");
     	if(result.isEmpty()) {
     		return false;
     	} else {
@@ -92,4 +103,21 @@ public class ProductDB extends GenericClassDB {
     	}
     }
     
+    public static ArrayList<Product> fetchFromIDArray(ArrayList<String> a){
+		
+    	MongoClient mongoClient =initConnection();
+        MongoDatabase database = connectDatabase(mongoClient);
+        MongoCollection<Product> collection = database.getCollection("Product",Product.class);
+    	
+        
+        BasicDBObject inQuery = new BasicDBObject();
+
+        inQuery.put("productId", new BasicDBObject("$in", a));
+        ArrayList<Product> result = collection.find(inQuery).into(new ArrayList());
+
+        
+        
+    	return result;
+    	
+    }
 }
