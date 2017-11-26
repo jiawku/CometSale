@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.cometsale.beans.LoginBean;
-import com.cometsale.model.UserDetails;
+import com.cometsale.model.StudentDetails;
 
 public class SessionManagement {
 	public static final String SessionNetID = "NetID";
@@ -23,7 +23,7 @@ public class SessionManagement {
 	session.setAttribute(SessionFirstName, 0);
 	
 	}
-	public static void createSessionLastlogin(HttpServletRequest request, UserDetails ud) throws ParseException{
+	public static void createSessionLastlogin(HttpServletRequest request, StudentDetails ud) throws ParseException{
 		HttpSession session = request.getSession();
 		
 	}

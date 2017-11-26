@@ -2,7 +2,7 @@ package com.cometsale.model;
 
 import java.util.Date;
 
-public class UserDetails {
+public class StudentDetails {
     private String netID;
     private String  firstName;
     private String  lastName;
@@ -11,9 +11,9 @@ public class UserDetails {
     private String email;
        
 
-	public UserDetails(){}
+	public StudentDetails(){}
     
-    public UserDetails(String ID,String Username,String FirstName,String LastName){
+    public StudentDetails(String ID,String Username,String FirstName,String LastName){
         this.netID=ID;
         this.firstName=FirstName;
         this.lastName=LastName;

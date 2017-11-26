@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.bson.Document;
 
 import com.cometsale.model.ProductDetails;
-import com.cometsale.model.UserDetails;
+import com.cometsale.model.StudentDetails;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;

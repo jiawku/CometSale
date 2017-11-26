@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cometsale.authenticate.SessionManagement;
 import com.cometsale.beans.LoginBean;
 import com.cometsale.model.Address;
-import com.cometsale.model.UserDetails;
+import com.cometsale.model.StudentDetails;
 import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
@@ -25,13 +25,13 @@ public class UserController {
 			String netID = (String) request.getSession().getAttribute(SessionManagement.SessionNetID);
 			
 			//check if the Netid exists in database.
-			ArrayList<UserDetails> findResult= UserDB.find(netID,"netID");
+			ArrayList<StudentDetails> findResult= UserDB.find(netID,"netID");
 			if(findResult==null){
 				//TODO: handle user not found.
 				System.out.println("User Not found!");
 				return "userinfo";
 			}
-			UserDetails user = findResult.get(0);
+			StudentDetails user = findResult.get(0);
 			model.addAttribute("userDetails",user);
 			System.out.println(user.getNetID());
 			
@@ -81,7 +81,7 @@ public class UserController {
 	public String register(HttpServletRequest request,ModelMap model) {
 		
 		System.out.println("entered Register");
-		UserDetails newUser = new UserDetails();
+		StudentDetails newUser = new StudentDetails();
 		
 		//default response
 		
@@ -126,8 +126,8 @@ public class UserController {
 		// TODO: All Db class send some exceptions.
 		
 		//check if the resgistration number is already present.
-		ArrayList<UserDetails> resultList = UserDB.find(newUser.getNetID(),"netID");
-		UserDetails findResult;
+		ArrayList<StudentDetails> resultList = UserDB.find(newUser.getNetID(),"netID");
+		StudentDetails findResult;
 		
 		if(!(resultList.isEmpty())) {
 			 findResult= UserDB.find(newUser.getNetID(),"netID").get(0);

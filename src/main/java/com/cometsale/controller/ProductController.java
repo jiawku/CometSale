@@ -18,7 +18,7 @@ import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.ProductDB;
 import com.cometsale.uimodel.ProductResponseModel;
 import com.cometsale.mongodb.UserDB;
-import com.cometsale.model.UserDetails;
+import com.cometsale.model.StudentDetails;
 
 @Controller
 public class ProductController {

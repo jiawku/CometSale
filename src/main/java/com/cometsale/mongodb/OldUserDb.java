@@ -3,7 +3,7 @@ package com.cometsale.mongodb;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 
-import com.cometsale.model.UserDetails;
+import com.cometsale.model.StudentDetails;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -16,13 +16,13 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 public class OldUserDb {
     
-    public static void push(UserDetails inputUser){
+    public static void push(StudentDetails inputUser){
         //get a client and database
         MongoClient mongoClient =initConnection();
         MongoDatabase database = connectDatabase(mongoClient);
         
         //push the object
-        MongoCollection<UserDetails> collection = database.getCollection("user",UserDetails.class);
+        MongoCollection<StudentDetails> collection = database.getCollection("user",StudentDetails.class);
         System.out.println(""+collection);
         collection.insertOne(inputUser);
         
