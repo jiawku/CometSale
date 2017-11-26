@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 
 public class WishList {
-	private ArrayList<Product> intresetedProduct;
+	private ArrayList<String> intresetedProduct;
 	
 	public WishList(){
-		this.intresetedProduct=new ArrayList<Product>();
+		this.intresetedProduct=new ArrayList<String>();
 	}
 	
 	public void addProductToWishlist(Product p) {
-		intresetedProduct.add(p);
+		intresetedProduct.add(p.getProductId());
 	}
 	
 	public void removeProduct(Product p) {
-		intresetedProduct.remove(p);
+		intresetedProduct.remove(p.getProductId());
 	}
 	
 	public void makeAnOffer(Product p,Student buyer,int price) {
@@ -23,13 +23,14 @@ public class WishList {
 		p.offers.add(offer);
 	}
 	
-	public void setWishList(ArrayList<Product> wishlist) {
+	public void setWishList(ArrayList<String> wishlist) {
 		this.intresetedProduct=wishlist;
 	}
 	
-	public ArrayList<Product> getWishList() {
+	public ArrayList<String> getWishList() {
 		return this.intresetedProduct;
 	}
+	
 	
 	public void Accept(Product p) {}
 	
