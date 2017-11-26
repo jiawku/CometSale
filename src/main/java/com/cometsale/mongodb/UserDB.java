@@ -1,7 +1,12 @@
 package com.cometsale.mongodb;
 
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.combine;
+import static com.mongodb.client.model.Updates.set;
+
 import java.util.ArrayList;
 
+import com.cometsale.model.Product;
 import com.cometsale.model.Student;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -21,6 +26,18 @@ public class UserDB extends GenericClassDB {
     
     public static void update(String searchString, String searchAttribute,String updateString,String updateAttribute) {
         GenericClassDB.update(Student.class,searchString,searchAttribute,updateString,updateAttribute);
+    }
+    
+    public static void updateWishList(Student user) {
+	    MongoClient mongoClient =initConnection();
+        MongoDatabase database = connectDatabase(mongoClient);
+        MongoCollection<Student> collection = database.getCollection("Student",Student.class);
+        
+        //update document
+        collection.updateOne(eq("netid", user.getNetid()), combine(set("wishlist", user.getWishList())));
+        
+        //close the connection.
+        closeConnection(mongoClient);
     }
 /*    public static <T> ArrayList<T> find(String inputString, String searchAttribute) {
         //get a client and database

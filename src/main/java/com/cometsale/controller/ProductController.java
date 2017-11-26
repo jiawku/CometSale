@@ -41,18 +41,18 @@ public class ProductController {
 		ProductResponseModel userModel = new ProductResponseModel();
 		userModel.setDefaultValue();
 
-		newProduct.details.setProductName(request.getParameter("productName"));
-		newProduct.details.setCategory(request.getParameter("category"));
-		newProduct.details.setOfferPrice(Double.parseDouble(request.getParameter("offerPrice")));
-		newProduct.details.setQuality(request.getParameter("quality"));
-		newProduct.details.setProductDesc(request.getParameter("productDescription"));
+		newProduct.getProductDetails().setProductName(request.getParameter("productName"));
+		newProduct.getProductDetails().setCategory(request.getParameter("category"));
+		newProduct.getProductDetails().setOfferPrice(Double.parseDouble(request.getParameter("offerPrice")));
+		newProduct.getProductDetails().setQuality(request.getParameter("quality"));
+		newProduct.getProductDetails().setProductDesc(request.getParameter("productDescription"));
 		if(!file.isEmpty()) {
 			
 			byte[] bytes;
 			try {
 				bytes = file.getBytes();
-				newProduct.details.setImageBytes(bytes);
-				System.out.println("size"+Integer.toString(bytes.length)+"uploaded size:"+Integer.toString(newProduct.details.getImageBytes().length));
+				newProduct.getProductDetails().setImageBytes(bytes);
+				System.out.println("size"+Integer.toString(bytes.length)+"uploaded size:"+Integer.toString(newProduct.getProductDetails().getImageBytes().length));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -66,23 +66,23 @@ public class ProductController {
 		houseAddress.setState(request.getParameter("state"));
 		houseAddress.setStreetname(request.getParameter("streetName"));
 		houseAddress.setAptNo(request.getParameter("AptNo"));
-		newProduct.details.setPickupAddress(houseAddress);
+		newProduct.getProductDetails().setPickupAddress(houseAddress);
 
 		System.out.println(newProduct.getProductId());
-		System.out.println(newProduct.details.getProductDesc());
-		System.out.println(newProduct.details.getPickupAddress().getCity());
+		System.out.println(newProduct.getProductDetails().getProductDesc());
+		System.out.println(newProduct.getProductDetails().getPickupAddress().getCity());
 		   
 
-		if(newProduct.details.getProductDesc() == null || 
-				newProduct.details.getProductName() == null || 
+		if(newProduct.getProductDetails().getProductDesc() == null || 
+				newProduct.getProductDetails().getProductName() == null || 
 		//   newUser.getUserName() == null ||
 		 //  newUser.getPassword() == null ||
-		   newProduct.details.getOfferPrice() == 0.0 || 
-		   newProduct.details.getCategory() == null || 
-		   newProduct.details.getPickupAddress().getCity() == null || 
-		   newProduct.details.getPickupAddress().getPinCode() == null || 
-		   newProduct.details.getPickupAddress().getState() == null || 
-		   newProduct.details.getPickupAddress().getStreetname() == null){
+		   newProduct.getProductDetails().getOfferPrice() == 0.0 || 
+		   newProduct.getProductDetails().getCategory() == null || 
+		   newProduct.getProductDetails().getPickupAddress().getCity() == null || 
+		   newProduct.getProductDetails().getPickupAddress().getPinCode() == null || 
+		   newProduct.getProductDetails().getPickupAddress().getState() == null || 
+		   newProduct.getProductDetails().getPickupAddress().getStreetname() == null){
 		   model.addAttribute("ERR_MSG", "Enter all fields correctly");
 		   return "registration_error";
 		}

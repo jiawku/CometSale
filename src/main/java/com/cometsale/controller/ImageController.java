@@ -42,7 +42,7 @@ public class ImageController {
 	 public void showImage(@PathVariable String id,HttpServletResponse response,HttpServletRequest request) throws IOException {
 
 		Product findResult=(Product) ProductDB.find(id,"productId").get(0); 
-		byte[] imageData=findResult.details.getImageBytes();
+		byte[] imageData=findResult.getProductDetails().getImageBytes();
 		
 	    response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
 	    OutputStream stream = response.getOutputStream();

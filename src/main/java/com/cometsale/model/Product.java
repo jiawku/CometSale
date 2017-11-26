@@ -10,7 +10,7 @@ public class Product {
 	String productId;
 	Student seller;
 	List<Offer> offers;
-	public ProductDetails details;
+	ProductDetails details;
 	ProductStatus status;
 	
 	public Product(){
@@ -52,7 +52,7 @@ public class Product {
 	public void setProductDetials(ProductDetails details) {
 		this.details=details;
 	}
-	public ProductDetails getProductDetials() {
+	public ProductDetails getProductDetails() {
 		return details;
 	}
 }

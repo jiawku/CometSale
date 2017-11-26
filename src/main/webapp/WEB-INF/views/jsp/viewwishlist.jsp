@@ -153,16 +153,16 @@
         %>
  		<tr>
       	<td name = "image" ><img src="imageController/<%out.println(records.get(i).getProductId());%>" width="80"height="80"></img></td>
-      	<td name ="productName" value=<%records.get(i).details.getProductName();%>><%out.print(records.get(i).details.getProductName());%></td>      	
-      	<td name ="productDesc" value=<%records.get(i).details.getProductDesc();%>><%out.print(records.get(i).details.getProductDesc());%></td>      	
-      	<td name ="offerPrice" value=<%records.get(i).details.getOfferPrice();%>><%out.print(records.get(i).details.getOfferPrice());%></td>      	
+      	<td name ="productName" value=<%records.get(i).getProductDetails().getProductName();%>><%out.print(records.get(i).getProductDetails().getProductName());%></td>      	
+      	<td name ="productDesc" value=<%records.get(i).getProductDetails().getProductDesc();%>><%out.print(records.get(i).getProductDetails().getProductDesc());%></td>      	
+      	<td name ="offerPrice" value=<%records.get(i).getProductDetails().getOfferPrice();%>><%out.print(records.get(i).getProductDetails().getOfferPrice());%></td>      	
       	<td name ="status" value=<%records.get(i).getStatus();%>><%out.print(records.get(i).getStatus());%></td> 
-      	<td name ="quality" value=<%records.get(i).details.getQuality();%>><%out.print(records.get(i).details.getQuality());%></td>      	
-      	<td name ="category" value=<%records.get(i).details.getCategory();%>><%out.print(records.get(i).details.getCategory());%></td>
-      	<td name ="streetName" value=<%records.get(i).details.getPickupAddress().getStreetname();%>><%out.print(records.get(i).details.getPickupAddress().getStreetname());%></td>
-      	<td name ="city" value=<%records.get(i).details.getPickupAddress().getCity();%>><%out.print(records.get(i).details.getPickupAddress().getCity());%></td>
-      	<td name ="state" value=<%records.get(i).details.getPickupAddress().getState();%>><%out.print(records.get(i).details.getPickupAddress().getState());%></td>
-      	<td name ="pinCode" value=<%records.get(i).details.getPickupAddress().getPinCode();%>><%out.print(records.get(i).details.getPickupAddress().getPinCode());%></td>
+      	<td name ="quality" value=<%records.get(i).getProductDetails().getQuality();%>><%out.print(records.get(i).getProductDetails().getQuality());%></td>      	
+      	<td name ="category" value=<%records.get(i).getProductDetails().getCategory();%>><%out.print(records.get(i).getProductDetails().getCategory());%></td>
+      	<td name ="streetName" value=<%records.get(i).getProductDetails().getPickupAddress().getStreetname();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getStreetname());%></td>
+      	<td name ="city" value=<%records.get(i).getProductDetails().getPickupAddress().getCity();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getCity());%></td>
+      	<td name ="state" value=<%records.get(i).getProductDetails().getPickupAddress().getState();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getState());%></td>
+      	<td name ="pinCode" value=<%records.get(i).getProductDetails().getPickupAddress().getPinCode();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getPinCode());%></td>
       	<td name ="addToWishlist"><a href="addToWishlist">Add To WishList</a></td>
       	<br>
       	<%

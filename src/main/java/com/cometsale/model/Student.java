@@ -19,6 +19,14 @@ public class Student {
 		this.netId = string;
 	}
 	
+	public WishList getWishList() {
+		return wishList;
+	}
+	
+	public void setWishList(WishList wishList) {
+		this.wishList=wishList;
+	}
+	
 	public void register() {}
 	
 	public void validate() {}

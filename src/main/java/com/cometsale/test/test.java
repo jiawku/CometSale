@@ -31,6 +31,7 @@ import org.springframework.security.util.FieldUtils;
 import com.cometsale.model.Address;
 import com.cometsale.model.Product;
 import com.cometsale.model.StudentDetails;
+import com.cometsale.model.WishList;
 import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
 import com.mongodb.Block;
@@ -42,6 +43,7 @@ import com.mongodb.client.model.Indexes;
 import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Sorts;
 import com.cometsale.model.ProductDetails;
+import com.cometsale.model.Student;
 import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.ProductDB;
 import com.cometsale.mongodb.SchemaBuilder;
@@ -136,9 +138,19 @@ public class test {
 //	}
 
 
-    ArrayList<Product> returnList=ProductDB.search("ipad");
-    for(Product i:returnList) {
-    	System.out.println(i.toString());
-    }
+//    ArrayList<Product> returnList=ProductDB.search("ipad");
+//    for(Product i:returnList) {
+//    	System.out.println(i.toString());
+//    }
+    	
+    Student user=UserDB.find("testuser","netid").get(0);
+    Product product=ProductDB.find("dfb89443-4016-48a1-9ee4-77a232e21c54","productId").get(0);
+
+    user.getWishList().addProductToWishlist(product);
+    System.out.println(user.getWishList().getWishList().get(0).getProductDetails().toString());
+    
+    UserDB.updateWishList(user);
+    
+    
     }
 }
