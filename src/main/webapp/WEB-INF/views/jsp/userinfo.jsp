@@ -101,7 +101,7 @@
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="#">Categories</a>
+                            <a href="viewWishlist">View WishList</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
@@ -122,7 +122,7 @@
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
-                        
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         
                         <li>
                         <form id="search" style="margin:9px" action="availableauctions">
@@ -138,10 +138,6 @@
                 </div>
             </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 	<div class="container">
       <div class="row">

@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "com.cometsale.model.Product" %>
 <%@ page import = "com.cometsale.mongodb.ProductDB" %>
+<%@ page import = "com.cometsale.controller.ProductController" %>
 <%@ page import="java.util.ArrayList" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home Page</title>
+<title>Searched Page</title>
 <link href="resources/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <style>
 #registration{
@@ -145,8 +146,7 @@
                   <th>Add to WishList</th>				  
                 </tr>
         <% 
-        ArrayList<Product> records = new ArrayList<Product>();
-        records = ProductDB.fetchAll();
+        ArrayList<Product> records = ProductDB.search(request.getParameter("searched"));
         for(int i=0;i<records.size();i++){
         %>
         <tr>

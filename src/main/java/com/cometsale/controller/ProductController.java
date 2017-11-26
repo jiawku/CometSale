@@ -30,6 +30,14 @@ public class ProductController {
 		return "newauction";
 	}
 	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(HttpServletRequest request, ModelMap model){
+		System.out.println("Searching the product");
+		ProductDB product = new ProductDB();
+		ArrayList<Product> records = product.search(request.getParameter("searched"));
+		return "searchedpage";
+	}
+	
 	@RequestMapping(value = "/successfulAddedProduct", method = RequestMethod.POST)
 	public String register(HttpServletRequest request,ModelMap model, @RequestParam("image") MultipartFile file)  {
 		
