@@ -13,6 +13,8 @@ import com.cometsale.authenticate.SessionManagement;
 import com.cometsale.beans.LoginBean;
 import com.cometsale.model.Address;
 import com.cometsale.model.Student;
+import com.cometsale.model.Product;
+import com.cometsale.model.WishList;
 import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
@@ -71,7 +73,7 @@ public class UserController {
 	
 	@RequestMapping(value ="/viewWishlist", method = RequestMethod.GET)
  	public String directToWishList(HttpServletRequest request,ModelMap model){
- 		return "viewwishlist";
+		return "viewwishlist";
   	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

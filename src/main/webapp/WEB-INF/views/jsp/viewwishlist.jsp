@@ -152,16 +152,19 @@
         <% 
         ArrayList<Product> records = new ArrayList<Product>();
         session = request.getSession();
-        String netID=session.getAttribute("NetID").toString();
+        String netID = session.getAttribute("NetID").toString();
         
         ArrayList<Student> findResult= UserDB.find(netID,"netid");
+        System.out.println(findResult.get(0).getNetid());
 		if(findResult==null){
 			//TODO: handle user not found.
 			System.out.println("User Not found!");
 		}
+		
 		Student user = findResult.get(0);
         System.out.println("viewWish "+user.getNetid());
         records = BuyerHelper.fetchBuyerWishList(user);
+        System.out.println(records.size());
         System.out.println("viewWishList "+user.fetchWishListArray().size());
         for(int i=0;i<records.size();i++){
         %>

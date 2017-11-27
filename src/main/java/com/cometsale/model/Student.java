@@ -35,12 +35,12 @@ public class Student {
 	public void setWishList(WishList wishList) {
 		this.wishList=wishList;
 	}
-	
+
 	public void addProductToWishlist(Product p) {
 		this.wishList.addProductToWishlist(p);
 		UserDB.updateWishList(this);
 	}
-	
+
 	public void register() {}
 	
 	public void validate() {}

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cometsale.model.Address;
 import com.cometsale.model.Product;
+import com.cometsale.model.Student;
 import com.cometsale.model.ProductDetails;
 import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.ProductDB;
@@ -133,8 +134,13 @@ public class ProductController {
 	
 	
 	@RequestMapping(value = "/addToWishlist" ,method = RequestMethod.GET)
-	public String addToWishlist(ModelMap model) {
-		System.out.println("Added successfully to wishlist");
+	public String addToWishlist(HttpServletRequest request, ModelMap model, Product p, Student s) {
+		
+		System.out.println("Added successfully to wishlist"+p.getProductId());
+		s.addProductToWishlist(p);
+		System.out.println(s.getNetid());
+		System.out.println(s.fetchWishListArray().size());
+		
 		return "successfuladdedtowishlist";
 	}
 	
