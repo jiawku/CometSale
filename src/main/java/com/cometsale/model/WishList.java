@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class WishList {
 	private ArrayList<String> intresetedProduct;
-	private int test;
 	
 	
 	public WishList(){
