@@ -153,9 +153,9 @@ public class test {
 //    
 //    UserDB.updateWishList(user);
     Student user=UserDB.find("testuser","netid").get(0);
-    Product product=ProductDB.find("83d3d18d-9e46-4a39-b072-24394025eea4","productId").get(0);
+    Product product=ProductDB.find("0d769b03-f668-4db2-8df8-5f7fcd2914bb","productId").get(0);
 
-//    user.addProductToWishlist(product);
+    user.addProductToWishlist(product);
 //    
 //    UserDB.push(user);
     

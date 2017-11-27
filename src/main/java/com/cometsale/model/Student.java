@@ -2,6 +2,8 @@ package com.cometsale.model;
 
 import java.util.ArrayList;
 
+import com.cometsale.mongodb.UserDB;
+
 public class Student {
 
 	String netId;
@@ -36,6 +38,7 @@ public class Student {
 	
 	public void addProductToWishlist(Product p) {
 		this.wishList.addProductToWishlist(p);
+		UserDB.updateWishList(this);
 	}
 	
 	public void register() {}
