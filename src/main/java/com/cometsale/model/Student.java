@@ -26,7 +26,7 @@ public class Student {
 	}
 	
 	public ArrayList<String> fetchWishListArray() {
-		return wishList.getWishList();
+		return wishList.getIntresetedProduct();
 	}
 	
 	

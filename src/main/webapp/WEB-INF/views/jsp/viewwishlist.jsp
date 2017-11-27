@@ -3,6 +3,7 @@
 <%@ page import = "com.cometsale.model.Product" %>
 <%@ page import = "com.cometsale.mongodb.ProductDB" %>
 <%@ page import="com.cometsale.model.Student" %>
+<%@ page import="com.cometsale.model.BuyerHelper" %>
 <%@ page import="com.cometsale.mongodb.UserDB" %>
 <%@ page import="java.util.ArrayList" %>
 
@@ -160,7 +161,7 @@
 		}
 		Student user = findResult.get(0);
         System.out.println("viewWish "+user.getNetid());
-        records = ProductDB.fetchFromIDArray(user.fetchWishListArray());
+        records = BuyerHelper.fetchBuyerWishList(user);
         System.out.println("viewWishList "+user.fetchWishListArray().size());
         for(int i=0;i<records.size();i++){
         %>

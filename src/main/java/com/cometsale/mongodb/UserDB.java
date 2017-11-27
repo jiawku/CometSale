@@ -34,7 +34,7 @@ public class UserDB extends GenericClassDB {
         MongoCollection<Student> collection = database.getCollection("Student",Student.class);
         
         //update document
-        collection.updateOne(eq("netid", user.getNetid()), combine(set("wishlist", user.getWishList())));
+        collection.updateOne(eq("netid", user.getNetid()), combine(set("wishList", user.getWishList())));
         
         //close the connection.
         closeConnection(mongoClient);
@@ -67,4 +67,5 @@ public class UserDB extends GenericClassDB {
     	  //close the connection.
         closeConnection(mongoClient);
     }
+    
 }

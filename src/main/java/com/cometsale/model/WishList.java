@@ -7,13 +7,6 @@ public class WishList {
 	private ArrayList<String> intresetedProduct;
 	private int test;
 	
-	public void setTest(int i) {
-		this.test=i;
-	}
-	
-	public int getTest() {
-		return this.test;
-	}
 	
 	public WishList(){
 		this.intresetedProduct=new ArrayList<String>();
@@ -32,12 +25,12 @@ public class WishList {
 		p.offers.add(offer);
 	}
 	
-	public void setWishList(ArrayList<String> wishlist) {
+	public void setIntresetedProduct(ArrayList<String> wishlist) {
 		this.intresetedProduct=wishlist;
 	}
 
 	
-	public ArrayList<String> getWishList() {
+	public ArrayList<String> getIntresetedProduct() {
 		return this.intresetedProduct;
 	}
 	

@@ -29,6 +29,7 @@ import org.bson.Document;
 import org.springframework.security.util.FieldUtils;
 
 import com.cometsale.model.Address;
+import com.cometsale.model.BuyerHelper;
 import com.cometsale.model.Product;
 import com.cometsale.model.StudentDetails;
 import com.cometsale.model.WishList;
@@ -152,16 +153,17 @@ public class test {
 //    
 //    UserDB.updateWishList(user);
     Student user=UserDB.find("testuser","netid").get(0);
-    Product product=ProductDB.find("b83da9af-8b04-4713-a424-186369b4d2bb","productId").get(0);
+    Product product=ProductDB.find("83d3d18d-9e46-4a39-b072-24394025eea4","productId").get(0);
 
-    user.addProductToWishlist(product);
+//    user.addProductToWishlist(product);
+//    
+//    UserDB.push(user);
+    
     System.out.println(user.fetchWishListArray().toString());
-    System.out.println(ProductDB.fetchFromIDArray(user.fetchWishListArray()).get(0).getProductDetails().toString());
-    
-     ArrayList<Product> result=	ProductDB.search("test");
-     System.out.println(result.get(0).getProductDetails().toString());
-//    UserDB.updateWishList(user);
-    
+    System.out.println(BuyerHelper.fetchBuyerWishList(user).get(0).getProductDetails().toString());
+//    
+//
+//    
     
     
     
