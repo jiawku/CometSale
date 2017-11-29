@@ -6,6 +6,7 @@
 <%@ page import="com.cometsale.model.BuyerHelper" %>
 <%@ page import="com.cometsale.mongodb.UserDB" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.cometsale.model.WishList" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -162,7 +163,10 @@
 		}
 		
 		Student user = findResult.get(0);
-        System.out.println("viewWish "+user.getNetid());
+		Product p = new Product();
+		p.getProductId();
+		user.addProductToWishlist(p);
+		System.out.println("viewWish "+user.getNetid());
         records = BuyerHelper.fetchBuyerWishList(user);
         System.out.println(records.size());
         System.out.println("viewWishList "+user.fetchWishListArray().size());
@@ -180,7 +184,7 @@
       	<td name ="city" value=<%records.get(i).getProductDetails().getPickupAddress().getCity();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getCity());%></td>
       	<td name ="state" value=<%records.get(i).getProductDetails().getPickupAddress().getState();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getState());%></td>
       	<td name ="pinCode" value=<%records.get(i).getProductDetails().getPickupAddress().getPinCode();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getPinCode());%></td>
-      	<td name ="addToWishlist"><a href="addToWishlist">Add To WishList</a></td>
+      	<td name ="removeFromWishlist"><a href="removedFromWishlist">Remove From WishList</a></td>
       	<br>
       	<%
       	}
