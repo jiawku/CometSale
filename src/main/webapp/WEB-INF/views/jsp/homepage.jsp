@@ -161,7 +161,7 @@
       	<td name ="city" value=<%records.get(i).getProductDetails().getPickupAddress().getCity();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getCity());%></td>
       	<td name ="state" value=<%records.get(i).getProductDetails().getPickupAddress().getState();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getState());%></td>
       	<td name ="pinCode" value=<%records.get(i).getProductDetails().getPickupAddress().getPinCode();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getPinCode());%></td>
-      	<td name ="addToWishlist" type="hidden" value=<%records.get(i).getProductId();%>><a href="addToWishlist">Add To WishList</a></td>
+      	<td name ="addToWishlist" type="hidden" value=<%records.get(i).getProductId();%>><a href="addToWishlist/<%out.print(records.get(i).getProductId());%>">Add To WishList</a></td>
       	<br>
       	<%
       	}
