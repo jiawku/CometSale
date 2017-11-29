@@ -178,8 +178,8 @@
       	<td name ="city" value=<%records.get(i).getProductDetails().getPickupAddress().getCity();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getCity());%></td>
       	<td name ="state" value=<%records.get(i).getProductDetails().getPickupAddress().getState();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getState());%></td>
       	<td name ="pinCode" value=<%records.get(i).getProductDetails().getPickupAddress().getPinCode();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getPinCode());%></td>
-      	<td name ="makeAnOffer"><a href="makeAnOffer/<%out.print(records.get(i).getProductId());%>">Make an offer</a></td>
       	<td name ="removeFromWishlist"><a href="removeFromWishlist/<%out.print(records.get(i).getProductId());%>">Remove from wishList</a></td>
+      	<td name ="makeAnOffer"><a href="makeAnOffer/<%out.print(records.get(i).getProductId());%>">Make an offer</a></td>
       	<br>
       	<%
       	}
