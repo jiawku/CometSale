@@ -3,11 +3,10 @@ package com.cometsale.model;
 public class Offer {
 	
 	Student buyer;
-	int price;
+	boolean lock;
 	
-	public Offer(Student buyer,int price) {
+	public Offer(Student buyer) {
 		this.buyer=buyer;
-		this.price=price;
 	}
 	
 	public Student getBuyer() {
@@ -16,12 +15,13 @@ public class Offer {
 	public void setBuyer(Student buyer) {
 		this.buyer = buyer;
 	}
-	public int getPrice() {
-		return price;
+
+	public void lockOffer(){
+		this.lock = true;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void unlockOffer(){
+		this.lock = false;
+		
 	}
-	
 
 }

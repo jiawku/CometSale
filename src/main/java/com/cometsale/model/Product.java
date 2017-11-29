@@ -55,4 +55,19 @@ public class Product {
 	public ProductDetails getProductDetails() {
 		return details;
 	}
+
+
+	public boolean isValidBuyer(Student student) {
+		if(student.getNetid() == this.seller.netId){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean checkAvailability(){
+		if(this.getStatus().equals("Available")){
+			return true;
+		}
+		return false;
+	}
 }

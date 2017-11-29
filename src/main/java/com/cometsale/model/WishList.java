@@ -11,7 +11,7 @@ public class WishList {
 		this.intresetedProduct=new ArrayList<String>();
 	}
 	
-	public void addProductToWishlist(Product p) {
+	public void addProduct(Product p) {
 		intresetedProduct.add(p.getProductId());
 	}
 	
@@ -20,7 +20,7 @@ public class WishList {
 	}
 	
 	public void makeAnOffer(Product p,Student buyer,int price) {
-		Offer offer = new Offer(buyer,price);
+		Offer offer = new Offer(buyer);
 		p.offers.add(offer);
 	}
 	
