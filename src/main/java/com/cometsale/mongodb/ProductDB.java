@@ -1,12 +1,15 @@
 package com.cometsale.mongodb;
 
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.combine;
+import static com.mongodb.client.model.Updates.set;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import org.bson.Document;
 
+import com.cometsale.model.Offer;
 import com.cometsale.model.Product;
 import com.cometsale.model.Student;
 import com.mongodb.BasicDBList;
@@ -96,6 +99,18 @@ public class ProductDB extends GenericClassDB {
     
     public static void update(String searchString, String searchAttribute,String updateString,String updateAttribute) {
         GenericClassDB.update(Product.class,searchString,searchAttribute,updateString,updateAttribute);
+    }
+    
+    public static void updateOffers(Product p) {
+    	 MongoClient mongoClient =initConnection();
+         MongoDatabase database = connectDatabase(mongoClient);
+         MongoCollection<Product> collection = database.getCollection("Product",Product.class);
+         
+         //update document
+         collection.updateOne(eq("productId", p.getProductId()), combine(set("offers", p.getOffers())));
+         
+         //close the connection.
+         closeConnection(mongoClient);
     }
     
     public static void uniqueConstraint() {

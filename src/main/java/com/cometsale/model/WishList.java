@@ -21,9 +21,9 @@ public class WishList {
 		intresetedProduct.remove(p.getProductId());
 	}
 	
-	public void makeAnOffer(Product p,Student buyer,int price) {
+	public void makeAnOffer(Product p,Student buyer) {
 		Offer offer = new Offer(buyer);
-		p.offers.add(offer);
+		p.addOffer(offer);
 	}
 	
 	public void setIntresetedProduct(ArrayList<String> wishlist) {

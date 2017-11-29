@@ -1,5 +1,6 @@
 package com.cometsale.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,7 +10,7 @@ public class Product {
 	
 	String productId;
 	Student seller;
-	List<Offer> offers;
+	ArrayList<Offer> offers;
 	ProductDetails details;
 	ProductStatus status;
 	
@@ -21,6 +22,7 @@ public class Product {
 		 setProductId(uuid);
 		 setStatus(ProductStatus.open);
 		 details=new ProductDetails();
+		 offers=new ArrayList<Offer>();
 	}
 	
 	
@@ -37,10 +39,10 @@ public class Product {
 	public void setSeller(Student seller) {
 		this.seller = seller;
 	}
-	public List<Offer> getOffers() {
+	public ArrayList<Offer> getOffers() {
 		return offers;
 	}
-	public void setOffers(List<Offer> offers) {
+	public void setOffers(ArrayList<Offer> offers) {
 		this.offers = offers;
 	}
 	public ProductStatus getStatus() {
@@ -56,7 +58,12 @@ public class Product {
 		return details;
 	}
 
-
+	
+	public void addOffer(Offer offer) {
+		offers.add(offer);
+		ProductDB.updateOffers(this);
+	}
+	
 	public boolean isValidBuyer(Student student) {
 		if(student.getNetid() == this.seller.netId){
 			return true;

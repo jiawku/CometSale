@@ -144,7 +144,7 @@ public class ProductController {
 		
 		String netID = session.getAttribute("NetID").toString();
         ArrayList<Student> findResult= UserDB.find(netID,"netid");
-		
+		System.out.println("NetID: "+netID);
 		Student s = findResult.get(0);
 		
 		s.addProductToWishlist(dumyProduct);
@@ -167,6 +167,22 @@ public class ProductController {
 		s.removeProductFromWishlist(dumyProduct);
 
 		return "removedFromWishlist";
+	}
+	
+	@RequestMapping(value = "/makeAnOffer/{productId}" ,method = RequestMethod.GET)
+	public String makeAnOffer(HttpSession session,HttpServletRequest request, ModelMap model, @PathVariable String productId) {
+		
+		Product product= ProductDB.find(productId, "productId").get(0);
+		
+		String netID = session.getAttribute("NetID").toString();
+        ArrayList<Student> findResult= UserDB.find(netID,"netid");
+		
+		Student s = findResult.get(0);
+		
+		s.getWishList().makeAnOffer(product, s);
+		
+
+		return "successfulMakeOffer";
 	}
 	
 	@RequestMapping(value = "/lockProduct" ,method = RequestMethod.GET)

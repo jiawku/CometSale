@@ -30,6 +30,7 @@ import org.springframework.security.util.FieldUtils;
 
 import com.cometsale.model.Address;
 import com.cometsale.model.BuyerHelper;
+import com.cometsale.model.Offer;
 import com.cometsale.model.Product;
 import com.cometsale.model.StudentDetails;
 import com.cometsale.model.WishList;
@@ -146,16 +147,30 @@ public class test {
     	
 
 //    Student user=UserDB.find("testuser","netid").get(0);
-    Product product=ProductDB.find("83d3d18d-9e46-4a39-b072-24394025eea4","productId").get(0);
+    Product product=ProductDB.find("0d769b03-f668-4db2-8df8-5f7fcd2914bb","productId").get(0);
 //
 //    user.getWishList().addProductToWishlist(product);
 //    System.out.println(user.getWishList().getWishList()3.get(0).getProductDetails().toString());
    
-    Student user=UserDB.find("testuser","netid").get(0);
- 
+    Student seller=UserDB.find("testuser","netid").get(0);
+    
+    product.setSeller(seller);
+    
+//    product.setOffers(new ArrayList<Offer>());
+    
+    Student buyer=UserDB.find("testuser2", "netid").get(0);
+    
+    buyer.getWishList().makeAnOffer(product, buyer);
+    
+//    ProductDB.updateOffers(product);
+    
+    System.out.println(product.getOffers().get(0).getBuyer().toString());
+    
+    
+    
 //    user.addProductToWishlist(product);
 //    
-      UserDB.updateWishList(user);
+//      UserDB.updateWishList(user);
 //    System.out.println(user.fetchWishListArray().toString());
 //    System.out.println(BuyerHelper.fetchBuyerWishList(user).size());
 //    System.out.println(BuyerHelper.fetchBuyerWishList(user).get(0).getProductDetails().toString());

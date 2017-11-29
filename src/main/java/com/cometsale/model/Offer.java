@@ -5,6 +5,11 @@ public class Offer {
 	Student buyer;
 	boolean lock;
 	
+	public Offer() {
+		this.buyer=null;
+		this.lock=false;
+	}
+	
 	public Offer(Student buyer) {
 		this.buyer=buyer;
 	}
