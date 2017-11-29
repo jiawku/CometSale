@@ -142,12 +142,12 @@ public class test {
 //	}
 
 
-    ArrayList<Product> returnList=ProductDB.fetchAllOpen();
-    
-//    returnList.get(0).setStatus(ProductStatus.locked);
-    for(Product i:returnList) {
-    	System.out.println(i.toString());
-    }
+//    ArrayList<Product> returnList=ProductDB.fetchAllOpen();
+//    
+////    returnList.get(0).setStatus(ProductStatus.locked);
+//    for(Product i:returnList) {
+//    	System.out.println(i.toString());
+//    }
     	
 
 //    Student user=UserDB.find("testuser","netid").get(0);
@@ -162,8 +162,11 @@ public class test {
 //    
 ////    product.setOffers(new ArrayList<Offer>());
 //    
-//    Student buyer=UserDB.find("testuser2", "netid").get(0);
+      Student buyer=UserDB.find("testuser", "netid").get(0);
 //    
+      Student seller=UserDB.find("seller", "netid").get(0);
+      
+      Product product=ProductDB.find("197555a4-3680-4dcc-bfb1-6565749ba26b","productId").get(0);
 //    buyer.getWishList().makeAnOffer(product, buyer);
 //    
 ////    ProductDB.updateOffers(product);
@@ -183,7 +186,7 @@ public class test {
 //
 //    
     
-    
+     SupplierHelper.lockProduct(seller,buyer,product);
     
     }
 }

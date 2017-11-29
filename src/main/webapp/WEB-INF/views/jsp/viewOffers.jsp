@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "com.cometsale.model.Product" %>
 <%@ page import = "com.cometsale.model.Student" %>
+<%@ page import = "com.cometsale.model.Offer" %>
 <%@ page import = "com.cometsale.mongodb.ProductDB" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import = "com.cometsale.mongodb.UserDB" %>
@@ -144,36 +145,26 @@
                 </tr>
         <% 
         session = request.getSession();
-        String netID = session.getAttribute("NetID").toString();
-        
-        ArrayList<Student> findResult= UserDB.find(netID,"netid");
-        System.out.println(findResult.get(0).getNetid());
-		if(findResult==null){
-			//TODO: handle user not found.
-			System.out.println("User Not found!");
-		}
-		
-		Student user = findResult.get(0);
-		
-        ArrayList<Product> records = new ArrayList<Product>();
-        records = ProductDB.fetchAll();
+       	
+        Product product = ProductDB.find(session.getAttribute("sellpid").toString(), "productId").get(0);
+        ArrayList<Offer> records = product.getOffers();
+      
         for(int i=0;i<records.size();i++){
-        	if ((records.get(i).getSeller()!=null ) && (records.get(i).getSeller().getNetid().equals(user.getNetid()))){
         %>
         <tr>
-        <td name ="sellersID" value=<%records.get(i).getSeller().getNetid();%>><%out.print(records.get(i).getSeller().getNetid());%></td>      	
-      	<td name ="firstName" value=<%records.get(i).getSeller().details.getFirstName();%>><%out.print(records.get(i).getSeller().details.getFirstName());%></td>      	
-      	<td name ="city" value=<%records.get(i).getSeller().details.getHomeAddress().getCity();%>><%out.print(records.get(i).getSeller().details.getHomeAddress().getCity());%></td>      	
-      	<td name ="pinCode" value=<%records.get(i).getSeller().details.getHomeAddress().getPinCode();%>><%out.print(records.get(i).getSeller().details.getHomeAddress().getPinCode());%></td>      	
-      	<td name ="state" value=<%records.get(i).getSeller().details.getHomeAddress().getState();%>><%out.print(records.get(i).getSeller().details.getHomeAddress().getState());%></td> 
-      	<td name ="streetName" value=<%records.get(i).getSeller().details.getHomeAddress().getStreetname();%>><%out.print(records.get(i).getSeller().details.getHomeAddress().getStreetname());%></td>      	
-      	<td name ="lastName" value=<%records.get(i).getSeller().details.getLastName();%>><%out.print(records.get(i).getSeller().details.getLastName());%></td>
-      	<td name ="phoneNumber" value=<%records.get(i).getSeller().details.getPhoneNumber();%>><%out.print(records.get(i).getSeller().details.getPhoneNumber());%></td>
-      	<td name ="email" value=<%records.get(i).getSeller().details.getEmail();%>><%out.print(records.get(i).getSeller().details.getEmail());%></td>
-      	<td name ="lockOffer"><a href="lockOffer/<%out.print(records.get(i).getProductId());%>">Lock Offer</a></td>
+        <td name ="buyerID" value=<%records.get(i).getBuyer().getNetid();%>><%out.print(records.get(i).getBuyer().getNetid());%></td>      	
+      	<td name ="firstName" value=<%records.get(i).getBuyer().details.getFirstName();%>><%out.print(records.get(i).getBuyer().details.getFirstName());%></td>      	
+      	<td name ="city" value=<%records.get(i).getBuyer().details.getHomeAddress().getCity();%>><%out.print(records.get(i).getBuyer().details.getHomeAddress().getCity());%></td>      	
+      	<td name ="pinCode" value=<%records.get(i).getBuyer().details.getHomeAddress().getPinCode();%>><%out.print(records.get(i).getBuyer().details.getHomeAddress().getPinCode());%></td>      	
+      	<td name ="state" value=<%records.get(i).getBuyer().details.getHomeAddress().getState();%>><%out.print(records.get(i).getBuyer().details.getHomeAddress().getState());%></td> 
+      	<td name ="streetName" value=<%records.get(i).getBuyer().details.getHomeAddress().getStreetname();%>><%out.print(records.get(i).getBuyer().details.getHomeAddress().getStreetname());%></td>      	
+      	<td name ="lastName" value=<%records.get(i).getBuyer().details.getLastName();%>><%out.print(records.get(i).getBuyer().details.getLastName());%></td>
+      	<td name ="phoneNumber" value=<%records.get(i).getBuyer().details.getPhoneNumber();%>><%out.print(records.get(i).getBuyer().details.getPhoneNumber());%></td>
+      	<td name ="email" value=<%records.get(i).getBuyer().details.getEmail();%>><%out.print(records.get(i).getBuyer().details.getEmail());%></td>
+      	<td name ="lockOffer"><a href="/CometSale/lockProduct/<%out.print(product.getProductId());%>/<%out.print(records.get(i).getBuyer().getNetid());%>">Lock Offer</a></td>
       	<br>
       	<%
-        	}}
+        	}
       	%>
       	</div>
       </div>

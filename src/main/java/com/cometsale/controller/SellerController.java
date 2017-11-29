@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cometsale.model.Product;
 import com.cometsale.model.Student;
+import com.cometsale.model.SupplierHelper;
+import com.cometsale.mongodb.ProductDB;
 import com.cometsale.mongodb.UserDB;
 
 @Controller
@@ -20,18 +22,31 @@ public class SellerController {
 
 	@RequestMapping(value = "/viewOffers/{productId}" ,method = RequestMethod.GET)
 	public String viewOffers(HttpSession session,HttpServletRequest request, ModelMap model, @PathVariable String productId) {
-		System.out.println("entered view offer");
-		Product dumyProduct= new Product();
-		dumyProduct.setProductId(productId);
 		
-		String netID = session.getAttribute("NetID").toString();
-        ArrayList<Student> findResult= UserDB.find(netID,"netid");
-		System.out.println("NetID: "+netID);
-		Student s = findResult.get(0);
-		
-		s.addProductToWishlist(dumyProduct);
-		
+		session.setAttribute("sellpid", productId);
 		return "viewOffers";
 	}
 	
+	@RequestMapping(value = "/lockProduct/{productId}/{buyerId}" ,method = RequestMethod.GET)
+	public String lockProduct(HttpSession session,HttpServletRequest request, ModelMap model, @PathVariable String productId,@PathVariable String buyerId) {
+		Product product= ProductDB.find(productId, "productId").get(0);
+		
+		String netID = session.getAttribute("NetID").toString();
+        ArrayList<Student> findResult= UserDB.find(netID,"netid");
+
+        ArrayList<Student> findResult2= UserDB.find(buyerId,"netid");
+        
+		Student seller = findResult.get(0);	
+		Student buyer = findResult2.get(0);
+				
+	
+		System.out.println("Lock ProductID: "+product.getProductId());
+		System.out.println("Lock buyerID: "+buyer.getNetid());
+		
+		
+		SupplierHelper.lockProduct(seller,buyer,product);
+		
+
+		return "successfullocked";
+	}
 }

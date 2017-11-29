@@ -150,7 +150,7 @@
                 </tr>
         <% 
         ArrayList<Product> records = new ArrayList<Product>();
-        records = ProductDB.fetchAll();
+        records = ProductDB.fetchAllOpen();
         for(int i=0;i<records.size();i++){
         %>
         <tr>

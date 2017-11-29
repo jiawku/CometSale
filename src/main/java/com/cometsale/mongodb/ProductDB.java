@@ -133,18 +133,31 @@ public class ProductDB extends GenericClassDB {
          closeConnection(mongoClient);
     }
     
-    public static void updateStatus(Product p) {
+    public static void lockProduct(Product p) {
    	 MongoClient mongoClient =initConnection();
         MongoDatabase database = connectDatabase(mongoClient);
         MongoCollection<Product> collection = database.getCollection("Product",Product.class);
         
         //update document
-        collection.updateOne(eq("productId", p.getProductId()), combine(set("status", p.getStatus())));
+        collection.updateOne(eq("productId", p.getProductId()), combine(set("status", "locked")));
         
         //close the connection.
         closeConnection(mongoClient);
    }
    
+    
+    public static void closeProduct(Product p) {
+      	 MongoClient mongoClient =initConnection();
+           MongoDatabase database = connectDatabase(mongoClient);
+           MongoCollection<Product> collection = database.getCollection("Product",Product.class);
+           
+           //update document
+           collection.updateOne(eq("productId", p.getProductId()), combine(set("status", "closed")));
+           
+           //close the connection.
+           closeConnection(mongoClient);
+      }
+      
     
     public static void uniqueConstraint() {
     	MongoClient mongoClient =initConnection();

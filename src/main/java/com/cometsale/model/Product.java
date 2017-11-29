@@ -45,6 +45,7 @@ public class Product {
 	public void setOffers(ArrayList<Offer> offers) {
 		this.offers = offers;
 	}
+	
 	public ProductStatus getStatus() {
 		return status;
 	}

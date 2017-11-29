@@ -14,19 +14,29 @@ public class SupplierHelper {
 	public void closeProduct(Student seller,Product p) {
 		if(p.getSeller().getNetid().equals(seller.getNetid())) {
 			p.setStatus(ProductStatus.closed);
-			ProductDB.updateStatus(p);
+			ProductDB.closeProduct(p);
 		}
 	}
 
-	public void lockProduct(Student seller,Product p) {
+	public static void lockProduct(Student seller,Student buyer,Product p) {
 		if(p.getSeller().getNetid().equals(seller.getNetid())) {
 			p.setStatus(ProductStatus.locked);
-			ProductDB.updateStatus(p);
+			ProductDB.lockProduct(p);
+			
+			ArrayList<Offer> offers=p.getOffers();
+			for(Offer offer : offers) {
+				if(offer.getBuyer().getNetid().equals(buyer.getNetid())) {
+					offer.lockOffer();
+					ProductDB.updateOffers(p);
+				}
+				
+			}
+			
 		}
 	}
 
 	
-	public ArrayList<Student> fetchOfferedBuyer(Student seller,Product p){
+	public static ArrayList<Student> fetchOfferedBuyer(Student seller,Product p){
 		
 		if(p.getSeller().getNetid().equals(seller.getNetid())) {
 			ArrayList<Student> output= new ArrayList<Student>();
