@@ -1,6 +1,7 @@
 package com.cometsale.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.cometsale.mongodb.UserDB;
 
@@ -31,17 +32,23 @@ public class Student {
 		return wishList.getIntresetedProduct();
 	}
 	
+		
 	
 	public void setWishList(WishList wishList) {
 		this.wishList=wishList;
 	}
 	
 	public void addProductToWishlist(Product p) {
-		this.wishList.addProductToWishlist(p);
+		this.wishList.addProduct(p);
 		UserDB.updateWishList(this);
 	}
 	
-	public void register() {}
+	public List<History> getBuyerHistories(){
+		return null;
+	}
 	
-	public void validate() {}
+	public List<History> getSellerHistories(){
+		return null;
+	}
+
 }

@@ -18,7 +18,7 @@ import static com.mongodb.client.model.Updates.*;
 import java.util.ArrayList;
 
 
-public abstract class GenericClassDB {
+public  class GenericClassDB {
     
     public static MongoClient initConnection() {
         
