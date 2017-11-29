@@ -19,8 +19,8 @@ import com.cometsale.mongodb.UserDB;
 public class SellerController {
 
 	@RequestMapping(value = "/viewOffers/{productId}" ,method = RequestMethod.GET)
-	public String addToWishlist(HttpSession session,HttpServletRequest request, ModelMap model, @PathVariable String productId) {
-		System.out.println("entered");
+	public String viewOffers(HttpSession session,HttpServletRequest request, ModelMap model, @PathVariable String productId) {
+		System.out.println("entered view offer");
 		Product dumyProduct= new Product();
 		dumyProduct.setProductId(productId);
 		

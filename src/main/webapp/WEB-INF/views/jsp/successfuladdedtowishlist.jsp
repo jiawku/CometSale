@@ -52,6 +52,10 @@
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
+                            <a href="/CometSale/sellerProducts">View Seller Products</a>
+                        </li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li>
                             <a href="/CometSale/viewWishlist">View WishList</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
@@ -76,14 +80,14 @@
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         
                         <li>
-                        <form id="search" style="margin:9px" action="search">
+                        <form id="search" style="margin:9px" action="/CometSale/search">
                         <a href="#" style="color:#777777">Search</a>
                         <input name="searched" type="text">
                         </form>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="logout">Logout</a>
+                            <a href="/CometSale/logout">Logout</a>
                         </li>
                     </ul>
                 </div>

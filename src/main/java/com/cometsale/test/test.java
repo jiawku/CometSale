@@ -33,6 +33,7 @@ import com.cometsale.model.BuyerHelper;
 import com.cometsale.model.Offer;
 import com.cometsale.model.Product;
 import com.cometsale.model.StudentDetails;
+import com.cometsale.model.SupplierHelper;
 import com.cometsale.model.WishList;
 import com.cometsale.mongodb.UserDB;
 import com.cometsale.uimodel.UserResponseModel;
@@ -45,6 +46,7 @@ import com.mongodb.client.model.Indexes;
 import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Sorts;
 import com.cometsale.model.ProductDetails;
+import com.cometsale.model.ProductStatus;
 import com.cometsale.model.Student;
 import com.cometsale.mongodb.GenericClassDB;
 import com.cometsale.mongodb.ProductDB;
@@ -140,31 +142,33 @@ public class test {
 //	}
 
 
-//    ArrayList<Product> returnList=ProductDB.search("ipad");
-//    for(Product i:returnList) {
-//    	System.out.println(i.toString());
-//    }
+    ArrayList<Product> returnList=ProductDB.fetchAllOpen();
+    
+//    returnList.get(0).setStatus(ProductStatus.locked);
+    for(Product i:returnList) {
+    	System.out.println(i.toString());
+    }
     	
 
 //    Student user=UserDB.find("testuser","netid").get(0);
-    Product product=ProductDB.find("0d769b03-f668-4db2-8df8-5f7fcd2914bb","productId").get(0);
-//
-//    user.getWishList().addProductToWishlist(product);
-//    System.out.println(user.getWishList().getWishList()3.get(0).getProductDetails().toString());
-   
-    Student seller=UserDB.find("testuser","netid").get(0);
-    
-    product.setSeller(seller);
-    
-//    product.setOffers(new ArrayList<Offer>());
-    
-    Student buyer=UserDB.find("testuser2", "netid").get(0);
-    
-    buyer.getWishList().makeAnOffer(product, buyer);
-    
-//    ProductDB.updateOffers(product);
-    
-    System.out.println(product.getOffers().get(0).getBuyer().toString());
+//    Product product=ProductDB.find("0d769b03-f668-4db2-8df8-5f7fcd2914bb","productId").get(0);
+////
+////    user.getWishList().addProductToWishlist(product);
+////    System.out.println(user.getWishList().getWishList()3.get(0).getProductDetails().toString());
+//   
+//    Student seller=UserDB.find("testuser","netid").get(0);
+//    
+//    product.setSeller(seller);
+//    
+////    product.setOffers(new ArrayList<Offer>());
+//    
+//    Student buyer=UserDB.find("testuser2", "netid").get(0);
+//    
+//    buyer.getWishList().makeAnOffer(product, buyer);
+//    
+////    ProductDB.updateOffers(product);
+//    
+//    System.out.println(product.getOffers().get(0).getBuyer().toString());
     
     
     

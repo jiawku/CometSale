@@ -58,23 +58,27 @@
                 <div class="container">
                     <ul class="nav">
                         <li>
-                            <a href="homepage">Home</a>
+                            <a href="/CometSale/homepage">Home</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="addProduct">Add Product</a>
+                            <a href="/CometSale/addProduct">Add Product</a>
                         </li>
 						<li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="viewProfile">View Profile</a>
+                            <a href="/CometSale/viewProfile">View Profile</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="viewWishlist">View Wishlist</a>
+                            <a href="/CometSale/sellerProducts">View Seller Products</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="contactus">Contact Us</a>
+                            <a href="/CometSale/viewWishlist">View WishList</a>
+                        </li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li>
+                            <a href="/CometSale/contactus">Contact Us</a>
                         </li>
                         
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>

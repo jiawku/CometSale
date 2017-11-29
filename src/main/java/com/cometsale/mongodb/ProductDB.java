@@ -97,6 +97,26 @@ public class ProductDB extends GenericClassDB {
     }
 
     
+    public static ArrayList<Product> fetchAllOpen() {
+    	return fetchAllOpen(25);
+    }
+    
+    public static ArrayList<Product> fetchAllOpen(int limit) {
+    	
+   	    
+	    MongoClient mongoClient =initConnection();
+        MongoDatabase database = connectDatabase(mongoClient);
+        MongoCollection<Product> collection = database.getCollection("Product",Product.class);
+    	
+        
+        ArrayList<Product> output =  collection.find(eq("status", "open")).limit(limit).into(new ArrayList());
+        int size = output.size();
+        
+        closeConnection(mongoClient);
+        return output;
+    
+    }
+    
     public static void update(String searchString, String searchAttribute,String updateString,String updateAttribute) {
         GenericClassDB.update(Product.class,searchString,searchAttribute,updateString,updateAttribute);
     }
@@ -112,6 +132,19 @@ public class ProductDB extends GenericClassDB {
          //close the connection.
          closeConnection(mongoClient);
     }
+    
+    public static void updateStatus(Product p) {
+   	 MongoClient mongoClient =initConnection();
+        MongoDatabase database = connectDatabase(mongoClient);
+        MongoCollection<Product> collection = database.getCollection("Product",Product.class);
+        
+        //update document
+        collection.updateOne(eq("productId", p.getProductId()), combine(set("status", p.getStatus())));
+        
+        //close the connection.
+        closeConnection(mongoClient);
+   }
+   
     
     public static void uniqueConstraint() {
     	MongoClient mongoClient =initConnection();
