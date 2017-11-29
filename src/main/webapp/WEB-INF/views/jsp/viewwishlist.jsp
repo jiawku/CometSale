@@ -163,13 +163,7 @@
 		}
 		
 		Student user = findResult.get(0);
-		Product p = new Product();
-		p.getProductId();
-		user.addProductToWishlist(p);
-		System.out.println("viewWish "+user.getNetid());
         records = BuyerHelper.fetchBuyerWishList(user);
-        System.out.println(records.size());
-        System.out.println("viewWishList "+user.fetchWishListArray().size());
         for(int i=0;i<records.size();i++){
         %>
  		<tr>

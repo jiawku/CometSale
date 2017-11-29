@@ -43,12 +43,12 @@ public class Student {
 		UserDB.updateWishList(this);
 	}
 	
-	public List<History> getBuyerHistories(){
-		return null;
-	}
-	
-	public List<History> getSellerHistories(){
-		return null;
-	}
+//	public List<History> getBuyerHistories(){
+//		return null;
+//	}
+//	
+//	public List<History> getSellerHistories(){
+//		return null;
+//	}
 
 }
