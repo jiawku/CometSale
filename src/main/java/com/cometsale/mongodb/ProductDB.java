@@ -133,8 +133,6 @@ public class ProductDB extends GenericClassDB {
         inQuery.put("productId", new BasicDBObject("$in", a));
         ArrayList<Product> result = collection.find(inQuery).into(new ArrayList());
 
-        
-        
     	return result;
     	
     }
