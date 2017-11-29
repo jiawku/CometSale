@@ -108,11 +108,11 @@
         <div>
         <div class="table-responsive">
           <table class="  mytable, table table-striped ">
-          <col width="130"><col width="130"><col width="200"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130">
+          <col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130"><col width="130">
            		
             <tr>
                   
-                  <th>Seller's NetID</th>
+                  <th>Seller's ID</th>
                   <th>First Name</th>
                   <th>City</th>
                   <th>Pincode</th>
@@ -121,6 +121,7 @@
 				  <th>Last Name</th>
 				  <th>Phone Number</th>
                   <th>Seller's Email</th>
+                  <th>Lock The Offer</th>
                 </tr>
                 
                 </table>
@@ -130,7 +131,7 @@
               
                   <th></th>
                   
-                  <th>Seller's NetID</th>
+                  <th>Seller's ID</th>
                   <th>First Name</th>
                   <th>City</th>
                   <th>Pincode</th>
@@ -138,7 +139,8 @@
 				  <th>Streetname</th>
 				  <th>Last Name</th>
 				  <th>Phone Number</th>
-                  <th>Seller's Email</th>				  
+                  <th>Seller's Email</th>
+                  <th>Lock The Offer</th>				  
                 </tr>
         <% 
         session = request.getSession();
@@ -159,14 +161,16 @@
         	if ((records.get(i).getSeller()!=null ) && (records.get(i).getSeller().getNetid().equals(user.getNetid()))){
         %>
         <tr>
-      	<td name ="firstName" value=<%records.get(i).getProductDetails().getProductName();%>><%out.print(records.get(i).getProductDetails().getProductName());%></td>      	
-      	<td name ="city" value=<%records.get(i).getProductDetails().getProductDesc();%>><%out.print(records.get(i).getProductDetails().getProductDesc());%></td>      	
-      	<td name ="pinCode" value=<%records.get(i).getProductDetails().getOfferPrice();%>><%out.print(records.get(i).getProductDetails().getOfferPrice());%></td>      	
-      	<td name ="state" value=<%records.get(i).getStatus();%>><%out.print(records.get(i).getStatus());%></td> 
-      	<td name ="streetName" value=<%records.get(i).getProductDetails().getQuality();%>><%out.print(records.get(i).getProductDetails().getQuality());%></td>      	
-      	<td name ="lastName" value=<%records.get(i).getProductDetails().getCategory();%>><%out.print(records.get(i).getProductDetails().getCategory());%></td>
-      	<td name ="phoneNumber" value=<%records.get(i).getProductDetails().getPickupAddress().getStreetname();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getStreetname());%></td>
-      	<td name ="email" value=<%records.get(i).getProductDetails().getPickupAddress().getCity();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getCity());%></td>
+        <td name ="sellersID" value=<%records.get(i).getSeller().getNetid();%>><%out.print(records.get(i).getSeller().getNetid());%></td>      	
+      	<td name ="firstName" value=<%records.get(i).getSeller().details.getFirstName();%>><%out.print(records.get(i).getSeller().details.getFirstName());%></td>      	
+      	<td name ="city" value=<%records.get(i).getSeller().details.getHomeAddress().getCity();%>><%out.print(records.get(i).getSeller().details.getHomeAddress().getCity());%></td>      	
+      	<td name ="pinCode" value=<%records.get(i).getSeller().details.getHomeAddress().getPinCode();%>><%out.print(records.get(i).getSeller().details.getHomeAddress().getPinCode());%></td>      	
+      	<td name ="state" value=<%records.get(i).getSeller().details.getHomeAddress().getState();%>><%out.print(records.get(i).getSeller().details.getHomeAddress().getState());%></td> 
+      	<td name ="streetName" value=<%records.get(i).getSeller().details.getHomeAddress().getStreetname();%>><%out.print(records.get(i).getSeller().details.getHomeAddress().getStreetname());%></td>      	
+      	<td name ="lastName" value=<%records.get(i).getSeller().details.getLastName();%>><%out.print(records.get(i).getSeller().details.getLastName());%></td>
+      	<td name ="phoneNumber" value=<%records.get(i).getSeller().details.getPhoneNumber();%>><%out.print(records.get(i).getSeller().details.getPhoneNumber());%></td>
+      	<td name ="email" value=<%records.get(i).getSeller().details.getEmail();%>><%out.print(records.get(i).getSeller().details.getEmail());%></td>
+      	<td name ="lockOffer"><a href="lockOffer/<%out.print(records.get(i).getProductId());%>">Lock Offer</a></td>
       	<br>
       	<%
         	}}

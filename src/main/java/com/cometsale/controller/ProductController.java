@@ -196,7 +196,7 @@ public class ProductController {
 		return "sellerproducts";
 	}
 	
-	@RequestMapping(value = "/lockProduct" ,method = RequestMethod.GET)
+	@RequestMapping(value = "/lockOffer" ,method = RequestMethod.GET)
 	public String lockProduct(ModelMap model) {
 		System.out.println("Successfully Locked the Product");
 		return "successfullocked";
