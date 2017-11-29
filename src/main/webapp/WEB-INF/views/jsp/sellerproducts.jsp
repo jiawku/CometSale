@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "com.cometsale.model.Product" %>
+<%@ page import = "com.cometsale.model.Student" %>
 <%@ page import = "com.cometsale.mongodb.ProductDB" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import = "com.cometsale.mongodb.UserDB" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home Page</title>
+<title>Seller Products</title>
 <link href="resources/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <style>
 #registration{
@@ -63,10 +65,6 @@
 						<li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
                             <a href="viewProfile">View Profile</a>
-                        </li>
-                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
-                        <li>
-                            <a href="sellerProducts">View Seller Products</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
@@ -149,9 +147,22 @@
                   <th>Add to WishList</th>				  
                 </tr>
         <% 
+        session = request.getSession();
+        String netID = session.getAttribute("NetID").toString();
+        
+        ArrayList<Student> findResult= UserDB.find(netID,"netid");
+        System.out.println(findResult.get(0).getNetid());
+		if(findResult==null){
+			//TODO: handle user not found.
+			System.out.println("User Not found!");
+		}
+		
+		Student user = findResult.get(0);
+		
         ArrayList<Product> records = new ArrayList<Product>();
         records = ProductDB.fetchAll();
         for(int i=0;i<records.size();i++){
+        	if ((records.get(i).getSeller()!=null ) && (records.get(i).getSeller().getNetid().equals(user.getNetid()))){
         %>
         <tr>
       	<td name = "image" ><img src="imageController/<%out.println(records.get(i).getProductId());%>" width="80"height="80"></img></td>
@@ -168,7 +179,7 @@
       	<td name ="addToWishlist" type="hidden" value=<%records.get(i).getProductId();%>><a href="addToWishlist/<%out.print(records.get(i).getProductId());%>">Add To WishList</a></td>
       	<br>
       	<%
-      	}
+        	}}
       	%>
       	</div>
       </div>

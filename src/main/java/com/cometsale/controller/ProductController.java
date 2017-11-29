@@ -43,16 +43,21 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/successfulAddedProduct", method = RequestMethod.POST)
-	public String register(HttpServletRequest request,ModelMap model, @RequestParam("image") MultipartFile file)  {
+	public String register(HttpSession session,HttpServletRequest request,ModelMap model, @RequestParam("image") MultipartFile file)  {
 		
 		System.out.println("Added Product");
 		Product newProduct = new Product();
+		
+		String netID = session.getAttribute("NetID").toString();
+        ArrayList<Student> findResult= UserDB.find(netID,"netid");
+		
+		Student seller = findResult.get(0);
 		
 		//default response
 		
 		ProductResponseModel userModel = new ProductResponseModel();
 		userModel.setDefaultValue();
-
+		newProduct.setSeller(seller);
 		newProduct.getProductDetails().setProductName(request.getParameter("productName"));
 		newProduct.getProductDetails().setCategory(request.getParameter("category"));
 		newProduct.getProductDetails().setOfferPrice(Double.parseDouble(request.getParameter("offerPrice")));
@@ -183,6 +188,12 @@ public class ProductController {
 		
 
 		return "successfulMakeOffer";
+	}
+	
+	@RequestMapping(value = "/sellerProducts", method = RequestMethod.GET)
+	public String sellerProducts(ModelMap model){
+		System.out.println("Seller Products");
+		return "sellerproducts";
 	}
 	
 	@RequestMapping(value = "/lockProduct" ,method = RequestMethod.GET)
