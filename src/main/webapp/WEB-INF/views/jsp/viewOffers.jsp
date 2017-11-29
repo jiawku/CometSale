@@ -10,8 +10,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Seller Products</title>
-<link href="resources/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<title>View Offers</title>
+<link href="/CometSale/resources/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <style>
 #registration{
   display: flex;
@@ -19,8 +19,8 @@
   flex-direction: column;
 }
 </style>
-    <script src="resources/js/jquery-1.10.2.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="/CometSale/resources/js/jquery-1.10.2.min.js"></script>
+    <script src="/CometSale/resources/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
@@ -41,7 +41,7 @@
             <div class="span12">
              <div class="span6">
               <h3 class="muted">
-                   <a href="#" class="logo" title="Back to homepage"><img src="resources/images/CometSaleLogo_2.png" height="200px" width="200px" alt="logo"></a>
+                   <a href="#" class="logo" title="Back to homepage"><img src="/CometSale/resources/images/CometSaleLogo_2.png" height="200px" width="200px" alt="logo"></a>
               </h3>
           </div>
         </div>
@@ -56,23 +56,23 @@
                 <div class="container">
                     <ul class="nav">
                         <li>
-                            <a href="homepage">Home</a>
+                            <a href="/CometSale/homepage">Home</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="addProduct">Add Product</a>
+                            <a href="/CometSale/addProduct">Add Product</a>
                         </li>
 						<li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="viewProfile">View Profile</a>
+                            <a href="/CometSale/viewProfile">View Profile</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="viewWishlist">View WishList</a>
+                            <a href="/CometSale/viewWishlist">View WishList</a>
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="contactus">Contact Us</a>
+                            <a href="/CometSale/contactus">Contact Us</a>
                         </li>
                         
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
@@ -112,18 +112,15 @@
            		
             <tr>
                   
-                  <th>Product Image</th>
-                  <th>Product Name</th>
-                  <th>Product Desc</th>
-                  <th>Price Offered</th>
-                  <th>Status</th>
-				  <th>Quality</th>
-				  <th>Category</th>
-				  <th>Street Name</th>
+                  <th>Seller's NetID</th>
+                  <th>First Name</th>
                   <th>City</th>
+                  <th>Pincode</th>
                   <th>State</th>
-                  <th>PinCode</th>
-                  <th>View Offers</th>				  
+				  <th>Streetname</th>
+				  <th>Last Name</th>
+				  <th>Phone Number</th>
+                  <th>Seller's Email</th>
                 </tr>
                 
                 </table>
@@ -133,18 +130,15 @@
               
                   <th></th>
                   
-                  <th>Product Image</th>
-                  <th>Product Name</th>
-                  <th>Product Desc</th>
-                  <th>Price Offered</th>
-                  <th>Status</th>
-				  <th>Quality</th>
-				  <th>Category</th>
-				  <th>Street Name</th>
+                  <th>Seller's NetID</th>
+                  <th>First Name</th>
                   <th>City</th>
+                  <th>Pincode</th>
                   <th>State</th>
-                  <th>PinCode</th>
-                  <th>View Offers</th>				  
+				  <th>Streetname</th>
+				  <th>Last Name</th>
+				  <th>Phone Number</th>
+                  <th>Seller's Email</th>				  
                 </tr>
         <% 
         session = request.getSession();
@@ -165,18 +159,14 @@
         	if ((records.get(i).getSeller()!=null ) && (records.get(i).getSeller().getNetid().equals(user.getNetid()))){
         %>
         <tr>
-      	<td name = "image" ><img src="imageController/<%out.println(records.get(i).getProductId());%>" width="80"height="80"></img></td>
-      	<td name ="productName" value=<%records.get(i).getProductDetails().getProductName();%>><%out.print(records.get(i).getProductDetails().getProductName());%></td>      	
-      	<td name ="productDesc" value=<%records.get(i).getProductDetails().getProductDesc();%>><%out.print(records.get(i).getProductDetails().getProductDesc());%></td>      	
-      	<td name ="offerPrice" value=<%records.get(i).getProductDetails().getOfferPrice();%>><%out.print(records.get(i).getProductDetails().getOfferPrice());%></td>      	
-      	<td name ="status" value=<%records.get(i).getStatus();%>><%out.print(records.get(i).getStatus());%></td> 
-      	<td name ="quality" value=<%records.get(i).getProductDetails().getQuality();%>><%out.print(records.get(i).getProductDetails().getQuality());%></td>      	
-      	<td name ="category" value=<%records.get(i).getProductDetails().getCategory();%>><%out.print(records.get(i).getProductDetails().getCategory());%></td>
-      	<td name ="streetName" value=<%records.get(i).getProductDetails().getPickupAddress().getStreetname();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getStreetname());%></td>
-      	<td name ="city" value=<%records.get(i).getProductDetails().getPickupAddress().getCity();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getCity());%></td>
-      	<td name ="state" value=<%records.get(i).getProductDetails().getPickupAddress().getState();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getState());%></td>
-      	<td name ="pinCode" value=<%records.get(i).getProductDetails().getPickupAddress().getPinCode();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getPinCode());%></td>
-      	<td name ="viewOffers" type="hidden" value=<%records.get(i).getProductId();%>><a href="viewOffers/<%out.print(records.get(i).getProductId());%>">View Offers</a></td>
+      	<td name ="firstName" value=<%records.get(i).getProductDetails().getProductName();%>><%out.print(records.get(i).getProductDetails().getProductName());%></td>      	
+      	<td name ="city" value=<%records.get(i).getProductDetails().getProductDesc();%>><%out.print(records.get(i).getProductDetails().getProductDesc());%></td>      	
+      	<td name ="pinCode" value=<%records.get(i).getProductDetails().getOfferPrice();%>><%out.print(records.get(i).getProductDetails().getOfferPrice());%></td>      	
+      	<td name ="state" value=<%records.get(i).getStatus();%>><%out.print(records.get(i).getStatus());%></td> 
+      	<td name ="streetName" value=<%records.get(i).getProductDetails().getQuality();%>><%out.print(records.get(i).getProductDetails().getQuality());%></td>      	
+      	<td name ="lastName" value=<%records.get(i).getProductDetails().getCategory();%>><%out.print(records.get(i).getProductDetails().getCategory());%></td>
+      	<td name ="phoneNumber" value=<%records.get(i).getProductDetails().getPickupAddress().getStreetname();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getStreetname());%></td>
+      	<td name ="email" value=<%records.get(i).getProductDetails().getPickupAddress().getCity();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getCity());%></td>
       	<br>
       	<%
         	}}
