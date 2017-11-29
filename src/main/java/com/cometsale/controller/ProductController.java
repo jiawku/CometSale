@@ -166,7 +166,7 @@ public class ProductController {
 		
 		s.removeProductFromWishlist(dumyProduct);
 
-		return "successfulRemovedFromWishlist";
+		return "removedFromWishlist";
 	}
 	
 	@RequestMapping(value = "/lockProduct" ,method = RequestMethod.GET)
