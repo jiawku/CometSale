@@ -130,7 +130,7 @@
                   <th>State</th>
                   <th>PinCode</th>
                   <th>Remove from WishList</th>
-                  <th>Lock the Product</th>				  
+                  <th>Make an Offer</th>			  
                 </tr>
                 
                 </table>
@@ -152,7 +152,7 @@
                   <th>State</th>
                   <th>PinCode</th>
                   <th>Remove from WishList</th>
-                  <th>Lock the Product</th>				  
+                  <th>Make an Offer</th>				  
                 </tr>
         <% 
         ArrayList<Product> records = new ArrayList<Product>();
@@ -183,6 +183,7 @@
       	<td name ="state" value=<%records.get(i).getProductDetails().getPickupAddress().getState();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getState());%></td>
       	<td name ="pinCode" value=<%records.get(i).getProductDetails().getPickupAddress().getPinCode();%>><%out.print(records.get(i).getProductDetails().getPickupAddress().getPinCode());%></td>
       	<td name ="removeFromWishlist"><a href="removeFromWishlist/<%out.print(records.get(i).getProductId());%>">Remove from wishList</a></td>
+      	<td name="makeAnOffer"><a href="makeAnOffer/<%out.print(records.get(i).getProductId());%>">Make An Offer</a></td>
       	<br>
       	<%
       	}
