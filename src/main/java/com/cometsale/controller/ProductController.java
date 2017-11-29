@@ -141,19 +141,32 @@ public class ProductController {
 		
 		Product dumyProduct= new Product();
 		dumyProduct.setProductId(productId);
-		System.out.println("Added successfully to wishlist"+dumyProduct.getProductId());
 		
 		String netID = session.getAttribute("NetID").toString();
         ArrayList<Student> findResult= UserDB.find(netID,"netid");
-        System.out.println(findResult.get(0).getNetid());
 		
 		Student s = findResult.get(0);
 		
 		s.addProductToWishlist(dumyProduct);
-		System.out.println(s.getNetid());
-		System.out.println(s.fetchWishListArray().size());
 		
 		return "successfuladdedtowishlist";
+	}
+	
+	@RequestMapping(value = "/removeFromWishlist/{productId}" ,method = RequestMethod.GET)
+	public String removeFromWishlist(HttpSession session,HttpServletRequest request, ModelMap model, @PathVariable String productId) {
+		
+		Product dumyProduct= new Product();
+		dumyProduct.setProductId(productId);
+		System.out.println("remove from wishlist"+dumyProduct.getProductId());
+		
+		String netID = session.getAttribute("NetID").toString();
+        ArrayList<Student> findResult= UserDB.find(netID,"netid");
+		
+		Student s = findResult.get(0);
+		
+		s.removeProductFromWishlist(dumyProduct);
+
+		return "successfulRemovedFromWishlist";
 	}
 	
 	@RequestMapping(value = "/lockProduct" ,method = RequestMethod.GET)

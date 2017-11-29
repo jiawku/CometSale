@@ -12,7 +12,9 @@ public class WishList {
 	}
 	
 	public void addProduct(Product p) {
-		intresetedProduct.add(p.getProductId());
+		if (!intresetedProduct.contains(p.getProductId())) {
+			intresetedProduct.add(p.getProductId());
+		}	
 	}
 	
 	public void removeProduct(Product p) {

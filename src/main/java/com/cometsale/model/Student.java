@@ -43,6 +43,11 @@ public class Student {
 		UserDB.updateWishList(this);
 	}
 	
+	public void removeProductFromWishlist(Product p) {
+		this.wishList.removeProduct(p);
+		UserDB.updateWishList(this);
+	}
+	
 //	public List<History> getBuyerHistories(){
 //		return null;
 //	}
