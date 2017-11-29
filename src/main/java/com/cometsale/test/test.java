@@ -146,7 +146,7 @@ public class test {
     	
 
 //    Student user=UserDB.find("testuser","netid").get(0);
-//    Product product=ProductDB.find("b83da9af-8b04-4713-a424-186369b4d2bb","productId").get(0);
+    Product product=ProductDB.find("83d3d18d-9e46-4a39-b072-24394025eea4","productId").get(0);
 //
 //    user.getWishList().addProductToWishlist(product);
 //    System.out.println(user.getWishList().getWishList()3.get(0).getProductDetails().toString());
@@ -155,13 +155,11 @@ public class test {
  
 //    user.addProductToWishlist(product);
 //    
-//    UserDB.push(user);
-    
-//    UserDB.updateWishList(user);
-    System.out.println(user.fetchWishListArray().toString());
-    System.out.println(BuyerHelper.fetchBuyerWishList(user).size());
-    System.out.println(BuyerHelper.fetchBuyerWishList(user).get(0).getProductDetails().toString());
-    System.out.println(BuyerHelper.fetchBuyerWishList(user).get(1).getProductDetails().toString());
+      UserDB.updateWishList(user);
+//    System.out.println(user.fetchWishListArray().toString());
+//    System.out.println(BuyerHelper.fetchBuyerWishList(user).size());
+//    System.out.println(BuyerHelper.fetchBuyerWishList(user).get(0).getProductDetails().toString());
+//    System.out.println(BuyerHelper.fetchBuyerWishList(user).get(1).getProductDetails().toString());
 //    
 //
 //    
